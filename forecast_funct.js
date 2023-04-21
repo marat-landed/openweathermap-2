@@ -498,7 +498,7 @@ export const today_forecast_recorded = async (openweathermap_address, global_pat
   //console.log(openweathermap_address);
   //return true;
   const response = await axios.get(openweathermap_address);
-  // 2 Получить текщее время прогноза (информационно, для формирования строки ошибок со временем)
+  // 2 Получить текущее время прогноза (информационно, для формирования строки ошибок со временем)
   let date = await get_date_from_response(response);
   // Какое время прогноза записано?
   let date_last = await DateLast(global_path);

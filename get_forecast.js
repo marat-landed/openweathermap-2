@@ -35,11 +35,11 @@ async function get_forecast_openweathermap() {
 	    lat + '&lon=' + lon +
 	    '&exclude=current,minutely,hourly,alerts&units=metric&appid=25446dc6c2ea52216ff635d00e0fcca9';
 	  // Записан ли уже прогноз для этого места?
-      let already_recorded = await today_forecast_recorded(address, global_path);
+	  let place_name_short = openweathermap_place[i][2]; // forec_gh, forec_probe
+      let already_recorded = await today_forecast_recorded(address, place_name_short);
       if (!already_recorded) { 
         // Записываем прогноз
-		let place_name = openweathermap_place[i][2]; // forec_gh, forec_probe
-        await MainForec(place_name, address, allow_output); // allow_output
+		await MainForec(place_name_short, address, allow_output); // allow_output
         console.log("Прогноз для",place_name,"записан!");
       } else {
 	    // Прогноз уже записан, записывать больше не нужно.
