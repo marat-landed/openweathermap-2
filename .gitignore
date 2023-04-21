@@ -1,0 +1,12 @@
+*.sublime-workspace
+*.sublime-project
+
+.DS_Store
+.AppleDouble
+.LSOverride
+
+.directory
+
+node_modules
+build
+.idea

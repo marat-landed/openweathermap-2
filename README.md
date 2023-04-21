@@ -1,2 +1,1 @@
-# openweathermap
 # openweathermap-2

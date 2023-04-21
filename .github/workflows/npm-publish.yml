@@ -1,0 +1,22 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: Cron For Openweathermap
+
+# on: workflow_dispatch
+on:
+  schedule:
+    #- cron: '*/5 * * * *'  # Каждые 5 минут 
+    #- cron: '48 */2 * * *' # На 48-й минуте каждые два часа
+    - cron: '47 * * * *' # На 47-й минуте каждый час с 0 до 23
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: npm ci
+      - run: npm test
