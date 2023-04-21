@@ -11,9 +11,9 @@ import {
   ref,
 } from 'firebase/database';
 
-import {param_scale} from "./js/myconst.js";
-import {param_name_str} from "./js/myconst.js";
-import {database_URL} from "./js/myconst.js";
+import {param_scale} from "/js/myconst.js";
+import {param_name_str} from "/js/myconst.js";
+import {database_URL} from "/js/myconst.js";
 
 const firebaseConfig = {
   databaseURL: database_URL,
