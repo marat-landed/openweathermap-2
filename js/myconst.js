@@ -24,3 +24,4 @@ export const openweathermap_place =
 				[ 63.460899, 142.785812, "Oymyakon", "Оймякон, Россия" ],
 				[ -77.846, 166.676, "McMurdo", "Станция Мак-Мердо, США" ] ];
 export const database_URL = "https://open-weather-map-2-default-rtdb.europe-west1.firebasedatabase.app";
+//export const database_URL = "https://probe-web-default-rtdb.europe-west1.firebasedatabase.app"; // Probe-web

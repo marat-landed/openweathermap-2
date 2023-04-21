@@ -20,7 +20,7 @@ async function get_forecast_openweathermap() {
 	let place_name = openweathermap_place[i][3];
 	// По долготе определяем часовой пояс
 	let timezone = Math.floor((lon+7.5)/15); // Округление вниз
-	console.log(place_name,"timezone:",timezone);
+	//console.log(place_name,"timezone:",timezone);
 	// Определяем время UTC
 	let date = new Date();
 	let UTCHours = date.getUTCHours();
@@ -29,14 +29,15 @@ async function get_forecast_openweathermap() {
 	if (local_time > 23) local_time = local_time - 24;
 	//console.log("local_time:",local_time);
 	// Если местное время больше 13 и меньше 15 (включительно), то пытаемся записать прогноз
-	if ((local_time > 12) && (local_time < 16)) {
+	if ((local_time > 12) && (local_time < 18)) {
 	  let lat = openweathermap_place[i][0];
 	  let address = 'http://api.openweathermap.org/data/2.5/onecall?lat=' +
 	    lat + '&lon=' + lon +
 	    '&exclude=current,minutely,hourly,alerts&units=metric&appid=25446dc6c2ea52216ff635d00e0fcca9';
 	  // Записан ли уже прогноз для этого места?
 	  let place_name_short = openweathermap_place[i][2]; // forec_gh, forec_probe
-      let already_recorded = await today_forecast_recorded(address, place_name_short);
+	  //console.log("place_name_short:",place_name_short);
+	  let already_recorded = await today_forecast_recorded(address, place_name_short);
       if (!already_recorded) { 
         // Записываем прогноз
 		await MainForec(place_name_short, address, allow_output); // allow_output
