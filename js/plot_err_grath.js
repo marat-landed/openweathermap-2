@@ -5,6 +5,8 @@
 //var chartT, // 'chart-temperature'
 //    chartClPr; // 'chart-clouds-precipitation'
 
+import {yAxis_title_arr} from "./js/myconst.js";
+
 var chartEr_err = [];
 
 function plot_err_grath(jsonValue) {

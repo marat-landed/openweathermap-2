@@ -2,6 +2,9 @@
 // 20-07-2022 Загрузка архива прогнозов на страницу Архив
 // 04-04-2023 Построение графиков распределения ошибок прогнозов
 
+import {Chart_title_arr} from "./js/myconst.js";
+import {yAxis_title_arr} from "./js/myconst.js";
+
 //var chartT, // 'chart-temperature'
 //    chartClPr; // 'chart-clouds-precipitation'
 function plot_dist_grath(all_dist) {
