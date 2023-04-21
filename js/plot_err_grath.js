@@ -5,7 +5,7 @@
 //var chartT, // 'chart-temperature'
 //    chartClPr; // 'chart-clouds-precipitation'
 
-import {yAxis_title_arr} from "./myconst.js";
+import {yAxis_title_arr} from "myconst.js";
 
 var chartEr_err = [];
 
