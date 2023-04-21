@@ -1,5 +1,3 @@
-const Chart_title_arr = ['Температура минимальная', 'Температура максимальная', 'Давление', 'Влажность', 'Скорость ветра', 'Направление ветра', 'Облачность', 'Вероятность осадков', 'Дождь', 'Снег'];
-const yAxis_title_arr = ['градусов', 'градусов', 'гПа', '%', 'м/с', 'градусов', '%', '%', 'мм', 'мм'];
 export const param_scale = [ 
     1, // temp, min 
 	1, // temp, max
@@ -25,3 +23,5 @@ export const openweathermap_place =
 				[ -77.846, 166.676, "McMurdo", "Станция Мак-Мердо, США" ] ];
 export const database_URL = "https://open-weather-map-2-default-rtdb.europe-west1.firebasedatabase.app";
 //export const database_URL = "https://probe-web-default-rtdb.europe-west1.firebasedatabase.app"; // Probe-web
+const Chart_title_arr = ['Температура минимальная', 'Температура максимальная', 'Давление', 'Влажность', 'Скорость ветра', 'Направление ветра', 'Облачность', 'Вероятность осадков', 'Дождь', 'Снег'];
+const yAxis_title_arr = ['градусов', 'градусов', 'гПа', '%', 'м/с', 'градусов', '%', '%', 'мм', 'мм'];
