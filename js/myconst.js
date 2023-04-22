@@ -18,7 +18,7 @@ export const openweathermap_place =
 			[ [ 49.9541962, 36.0966085, "Pisochyn", "Песочин, Украина, Харьковская область" ],
 				[ 61.217381, -149.863129, "Anchorage", "Анкоридж, США, Аляска" ],
 				[ -54.81084, -68.31591, "Ushuaia", "Ушуая, Аргентина, Огненная Земля" ],
-				[ 9.005401, 38.763611, "Addis_Ababa", "Аддис-Абе́ба, Эфиопия" ],
+				[ 9.005401, 38.763611, "Addis_Ababa", "Аддис-Абеба, Эфиопия" ],
 				[ 63.460899, 142.785812, "Oymyakon", "Оймякон, Россия" ],
 				[ -77.846, 166.676, "McMurdo", "Станция Мак-Мердо, США" ] ];
 export const database_URL = "https://open-weather-map-2-default-rtdb.europe-west1.firebasedatabase.app";

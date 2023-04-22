@@ -409,21 +409,6 @@ const SetNewDistribs_param = async (global_path, param_no, distribs_str_arr, all
   }
 }
 
-const DateLast = async (global_path) => {
-// Из БД извлекает первую строку прогноза t_min (самый свежий прогноз) и из неё - последнее время прогноза
-  let date_last = 0;
-  let path = global_path + "/forecast/temp/min/0";
-  // Читаем одну строку
-  let paramRef = ref(database, path);
-  var snapshot = await get(ref(database, path));
-  var data = await snapshot.val(); 
-  if( data != null ) {
-	let param_array = data.split(' ').map(Number);
-	date_last = param_array[0];
-  };
-  return date_last;	
-}
-
 const SetDateForecasts = async (global_path, allow_output) => {
 // текущая дата
   let date = new Date();
@@ -482,14 +467,54 @@ const SetDateForecasts = async (global_path, allow_output) => {
   } 
 }
 
-export const MainForec = async (global_path, openweathermap_address, allow_output) => {
+export const MainForec = async (place_name_short, openweathermap_address, allow_output) => {
   // Вызывается из get_forecast.js в случае, если сегодняшний прогноз не записан,
   // т.е. функция today_forecast_recorded вернула false
-  await myMain(global_path, openweathermap_address, allow_output);
-  goOffline(database);
+  await myMain(place_name_short, openweathermap_address, allow_output);
+  //goOffline(database);
 }
 
-export const today_forecast_recorded = async (openweathermap_address, global_path) => {
+const DateLast = async (place_name_short) => {
+// Из БД извлекает первую строку прогноза t_min (самый свежий прогноз) и из неё - последнее время прогноза
+  let date_last = 0;
+  console.log("DateLast. place_name_short:",place_name_short);
+  let path = place_name_short + "/forecast/temp/min/0";
+  
+  /*
+  const tasksRef = ref(database, path);
+  // Читаем одну строку
+  await get(tasksRef)
+    .then((snapshot) => {
+      const data = snapshot.val();
+      console.log(data);
+	  if( data != null ) {
+		let param_array = data.split(' ').map(Number);
+		date_last = param_array[0];
+		console.log("From DateLast date_last:",date_last);
+	  };
+	  return date_last;
+    })
+    .catch((err) => {
+      console.error(err);
+	  return date_last;
+    });
+  */
+  
+  let paramRef = ref(database, path);
+  //console.log(paramRef);
+  var snapshot = await get(paramRef);
+  //console.log("snapshot:",snapshot);
+  var data = await snapshot.val(); 
+  console.log(data);
+  if( data != null ) {
+	let param_array = data.split(' ').map(Number);
+	date_last = param_array[0];
+	console.log("From DateLast date_last:",date_last);
+  };
+  return date_last;	
+}
+
+export const today_forecast_recorded = async (openweathermap_address, place_name_short) => {
   // Проверяем, записан ли сегодняшний прогноз в Firebase
   // Вызывается из get_forecast.js для проверки: записан ли сегодняшний прогноз.
   // Еси прогноз записан, возвращает true и наоборот.
@@ -500,10 +525,17 @@ export const today_forecast_recorded = async (openweathermap_address, global_pat
   const response = await axios.get(openweathermap_address);
   // 2 Получить текущее время прогноза (информационно, для формирования строки ошибок со временем)
   let date = await get_date_from_response(response);
+  console.log("date",date);
   // Какое время прогноза записано?
-  let date_last = await DateLast(global_path);
+  let date_last = await DateLast(place_name_short);
+  console.log("From today_forecast_recorded date_last:",date_last);
   // Если даты совпадаю, прогноз уже записан, возвращает true
   let already_recorded = date == date_last;
-  if (already_recorded) goOffline(database);
+  //if (already_recorded) goOffline(database);
   return already_recorded;
+}
+
+export const goOffline_fun = async () => {
+  // Вызывается из get_forecast.js для завершения работы с БД
+  goOffline(database);
 }
