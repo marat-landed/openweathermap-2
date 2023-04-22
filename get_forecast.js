@@ -29,7 +29,7 @@ async function get_forecast_openweathermap_1(i) {
 	if (local_time > 23) local_time = local_time - 24;
 	console.log("local_time:",local_time);
 	// Если местное время больше 13 и меньше 15 (включительно), то пытаемся записать прогноз
-	if ((local_time > 9) && (local_time < 16)) {
+	if ((local_time > 12) && (local_time < 16)) {
 	  console.log("Проверяем, зписан ли прогноз для",place_name);
 	  let lat = openweathermap_place[i][0];
 	  let address = 'http://api.openweathermap.org/data/2.5/onecall?lat=' +
