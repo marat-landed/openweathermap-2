@@ -467,7 +467,7 @@ const SetDateForecasts = async (global_path, allow_output) => {
   } 
 }
 
-export const MainForec = async (place_name_short, openweathermap_address, allow_output) => {
+const MainForec = async (place_name_short, openweathermap_address, allow_output) => {
   // Вызывается из get_forecast.js в случае, если сегодняшний прогноз не записан,
   // т.е. функция today_forecast_recorded вернула false
   await myMain(place_name_short, openweathermap_address, allow_output);
@@ -514,7 +514,7 @@ const DateLast = async (place_name_short) => {
   return date_last;	
 }
 
-export const today_forecast_recorded = async (openweathermap_address, place_name_short) => {
+const today_forecast_recorded = async (openweathermap_address, place_name_short) => {
   // Проверяем, записан ли сегодняшний прогноз в Firebase
   // Вызывается из get_forecast.js для проверки: записан ли сегодняшний прогноз.
   // Еси прогноз записан, возвращает true и наоборот.
@@ -535,7 +535,9 @@ export const today_forecast_recorded = async (openweathermap_address, place_name
   return already_recorded;
 }
 
-export const goOffline_fun = async () => {
+const goOffline_fun = async () => {
   // Вызывается из get_forecast.js для завершения работы с БД
   goOffline(database);
 }
+
+export {goOffline_fun, today_forecast_recorded, MainForec};
