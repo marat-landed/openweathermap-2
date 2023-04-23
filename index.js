@@ -141,6 +141,7 @@ import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
 	console.log(i);
 	elements[i].onclick = function(event){
       let tabcontent, tablinks;
+	  console.log(event);
 	  let tabName = event.currentTarget.tabName;
 	  tabcontent = document.getElementsByClassName("tabcontent");
 	  console.log(tabcontent);
@@ -153,7 +154,6 @@ import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
 	  }
 	  document.getElementById(tabName).style.display = "block";
 	  elements[i].style.display = "block";
-	  console.log(event);
 	  console.log(event.currentTarget.className);
 	  event.currentTarget.className += " active";
 	  console.log(event.currentTarget.className);
