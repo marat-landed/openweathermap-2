@@ -131,4 +131,4 @@
 	  load_page('about');
 	  load_page('site_traffic');
 	  
-	  //document.getElementById("defaultOpen").click(); // Открываем 1-ю закладку
+	  document.getElementById("defaultOpen").click(); // Открываем 1-ю закладку
