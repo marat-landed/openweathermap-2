@@ -138,13 +138,10 @@ import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
   let elements = document.querySelectorAll(".tablinks");
   for (let i = 0; i < elements.length; i++) {
     //elements[i].onclick = function(evt, tabName){
-	console.log(i);
 	elements[i].onclick = function(event){
       let tabcontent, tablinks;
-	  console.log(event);
 	  let tabName = event.target.name;
 	  tabcontent = document.getElementsByClassName("tabcontent");
-	  console.log(tabcontent);
 	  for (let i = 0; i < tabcontent.length; i++) {
 		tabcontent[i].style.display = "none";
 	  }
@@ -154,9 +151,7 @@ import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
 	  }
 	  document.getElementById(tabName).style.display = "block";
 	  elements[i].style.display = "block";
-	  console.log(event.currentTarget.className);
 	  event.currentTarget.className += " active";
-	  console.log(event.currentTarget.className);
     };
   }      
 	  
