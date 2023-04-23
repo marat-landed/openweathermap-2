@@ -9,6 +9,11 @@ html {
 }
 body {font-family: Arial;}
 
+.site_header {
+  background-color: #ff0000;
+  font-size: 16px;
+}
+
 /* Style the tab */
 .tab {
   overflow: hidden;

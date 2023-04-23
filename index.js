@@ -101,8 +101,7 @@ import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
 	  }
 	  
 	  function load_page(page_name) {
-		console.log(page_name);
-	    var xhr= new XMLHttpRequest();
+		var xhr= new XMLHttpRequest();
 	    xhr.open('GET', 'pages/' + page_name, true);
 	    xhr.onreadystatechange= function() {
 		  if (this.readyState!==4) return;
