@@ -10,8 +10,9 @@ html {
 body {font-family: Arial;}
 
 .site_header {
-  background-color: #ff0000;
-  font-size: 16px;
+  background-color: #ffbf006b;
+  font-size: 21px;
+  padding: 10px;
 }
 
 /* Style the tab */
