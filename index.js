@@ -142,6 +142,7 @@ import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
 	elements[i].onclick = function(evt){
       var tabcontent, tablinks;
 	  tabcontent = document.getElementsByClassName("tabcontent");
+	  console.log(tabcontent);
 	  for (let i = 0; i < tabcontent.length; i++) {
 		tabcontent[i].style.display = "none";
 	  }
