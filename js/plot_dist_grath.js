@@ -12,7 +12,7 @@ import {Chart_title_arr, yAxis_title_arr} from "./myconst.js";
 
 //var chartT, // 'chart-temperature'
 //    chartClPr; // 'chart-clouds-precipitation'
-export function plot_dist_grath(all_dist) {
+function plot_dist_grath(all_dist) {
   //var statistics = last_statistics[0]; // Массив last_statistics имеет один единственный элемент
   //plotChart(statistics);
   plotDistribution(all_dist);
