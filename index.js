@@ -131,4 +131,23 @@
 	  load_page('about');
 	  load_page('site_traffic');
 	  
-	  document.getElementById("defaultOpen").click(); // Открываем 1-ю закладку
+  var elements = document.querySelectorAll(".tablinks");
+  for (let i = 0; i < elements.length; i++) {
+    //elements[i].onclick = function(evt, tabName){
+	elements[i].onclick = function(evt){
+      var tabcontent, tablinks;
+	  tabcontent = document.getElementsByClassName("tabcontent");
+	  for (let i = 0; i < tabcontent.length; i++) {
+		tabcontent[i].style.display = "none";
+	  }
+	  tablinks = document.getElementsByClassName("tablinks");
+	  for (let i = 0; i < tablinks.length; i++) {
+		tablinks[i].className = tablinks[i].className.replace(" active", "");
+	  }
+	  //document.getElementById(tabName).style.display = "block";
+	  elements[i].style.display = "block";
+	  evt.currentTarget.className += " active";
+    };
+  }      
+	  
+  document.getElementById("defaultOpen").click(); // Открываем 1-ю закладку
