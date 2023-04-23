@@ -26,6 +26,6 @@ const database_URL = "https://open-weather-map-2-default-rtdb.europe-west1.fireb
 const Chart_title_arr = ['Температура минимальная', 'Температура максимальная', 'Давление', 'Влажность', 'Скорость ветра', 'Направление ветра', 'Облачность', 'Вероятность осадков', 'Дождь', 'Снег'];
 const yAxis_title_arr = ['градусов', 'градусов', 'гПа', '%', 'м/с', 'градусов', '%', '%', 'мм', 'мм'];
 
-export {param_scale, param_name_str, openweathermap_place, database_URL};
+export { param_scale, param_name_str, openweathermap_place, database_URL, Chart_title_arr, yAxis_title_arr };
 
 

@@ -8,9 +8,7 @@
 //import {Chart_title_arr} from "./js/myconst.js";
 //import {yAxis_title_arr} from "./js/myconst.js";
 
-import {Chart_title_arr} from "myconst.js";
-//import {yAxis_title_arr} from "myconst.js";
-
+import {Chart_title_arr, yAxis_title_arr} from "myconst.js";
 
 //var chartT, // 'chart-temperature'
 //    chartClPr; // 'chart-clouds-precipitation'
