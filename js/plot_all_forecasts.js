@@ -2,9 +2,9 @@
 // 20-07-2022 Загрузка архива прогнозов на страницу Архив
 // 15-02-2023 Усовершенствование создания таблиц
 
-//import {Chart_title_arr} from "/js/myconst.js";
+import {Chart_title_arr} from "./myconst.js";
 
-function plot_all_forecasts(jsonValue) {
+export function plot_all_forecasts(jsonValue) {
 // "forecast/clouds": Array(8) [ "1678352400 64.00 100.00 100.00 100.00 9.00 79.00 100.00 99.00",
 // "1678352400 68.00 100.00 100.00 100.00 7.00 75.00 18.00 95.00", "1678352400 67.00 100.00 100.00 100.00 7.00 75.00 18.00 95.00", … ]
 // "forecast/wind_speed": Array(8) [ "1678352400 6.85 7.24 8.12 7.38 4.09 5.14 4.51 2.59",

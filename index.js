@@ -3,6 +3,7 @@
 import { plot_dist_grath } from "./js/plot_dist_grath.js";
 import { plot_dist_tab } from "./js/plot_dist_tab.js";
 import { plot_err_grath } from "./js/plot_err_grath.js";
+import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
 	
 	    var firebaseConfig = {
 	      //apiKey: "AIzaSyDZCBYYnoI8O9rWW_V9PhksdRppDWfSG4o", 
