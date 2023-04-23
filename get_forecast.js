@@ -5,10 +5,8 @@
 // В модуле выполняется процедура get_forecast_openweathermap.
 
 //import colors from 'colors';
-import { MainForec } from './forecast_funct.js';
-import { today_forecast_recorded } from './forecast_funct.js';
-import { openweathermap_place } from "./js/myconst.js";
-import { goOffline_fun } from "./forecast_funct.js";
+import { MainForec, today_forecast_recorded, goOffline_fun } from './forecast_funct';
+import { openweathermap_place } from "./js/myconst";
 
 let allow_output = false;
 
