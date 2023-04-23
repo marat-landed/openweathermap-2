@@ -135,12 +135,13 @@ import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
 	  load_page('about');
 	  load_page('site_traffic');
 	  
-  var elements = document.querySelectorAll(".tablinks");
+  let elements = document.querySelectorAll(".tablinks");
   for (let i = 0; i < elements.length; i++) {
     //elements[i].onclick = function(evt, tabName){
 	console.log(i);
 	elements[i].onclick = function(event){
-      var tabcontent, tablinks;
+      let tabcontent, tablinks;
+	  let tabName = event.currentTarget.tabName;
 	  tabcontent = document.getElementsByClassName("tabcontent");
 	  console.log(tabcontent);
 	  for (let i = 0; i < tabcontent.length; i++) {
@@ -150,7 +151,7 @@ import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
 	  for (let i = 0; i < tablinks.length; i++) {
 		tablinks[i].className = tablinks[i].className.replace(" active", "");
 	  }
-	  //document.getElementById(tabName).style.display = "block";
+	  document.getElementById(tabName).style.display = "block";
 	  elements[i].style.display = "block";
 	  console.log(event);
 	  console.log(event.currentTarget.className);
