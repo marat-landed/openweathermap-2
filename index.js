@@ -1,6 +1,6 @@
 // index.js 23-04-2023
 
-  import { plot_dist_grath } from "/js/plot_dist_grath.js";
+  import { plot_dist_grath } from "./js/plot_dist_grath.js";
 	
 	    var firebaseConfig = {
 	      //apiKey: "AIzaSyDZCBYYnoI8O9rWW_V9PhksdRppDWfSG4o", 
