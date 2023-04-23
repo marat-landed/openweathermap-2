@@ -152,7 +152,10 @@ import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
 	  }
 	  //document.getElementById(tabName).style.display = "block";
 	  elements[i].style.display = "block";
+	  console.log(event);
+	  console.log(event.currentTarget.className);
 	  event.currentTarget.className += " active";
+	  console.log(event.currentTarget.className);
     };
   }      
 	  
