@@ -139,7 +139,7 @@ import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
   for (let i = 0; i < elements.length; i++) {
     //elements[i].onclick = function(evt, tabName){
 	console.log(i);
-	elements[i].onclick = function(evt){
+	elements[i].onclick = function(event){
       var tabcontent, tablinks;
 	  tabcontent = document.getElementsByClassName("tabcontent");
 	  console.log(tabcontent);
@@ -152,7 +152,7 @@ import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
 	  }
 	  //document.getElementById(tabName).style.display = "block";
 	  elements[i].style.display = "block";
-	  evt.currentTarget.className += " active";
+	  event.currentTarget.className += " active";
     };
   }      
 	  
