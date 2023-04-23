@@ -5,11 +5,11 @@
 //var chartT, // 'chart-temperature'
 //    chartClPr; // 'chart-clouds-precipitation'
 
-//import {yAxis_title_arr} from "/js/myconst.js";
+import {Chart_title_arr} from "./myconst.js";
 
 var chartEr_err = [];
 
-function plot_err_grath(jsonValue) {
+export function plot_err_grath(jsonValue) {
   // jsonValue - объект.
   // Key: distribution/temp/min, distribution/temp/max,..., distribution/snow
   // Каждый элемент объекта - массив из 7 значений - по дням прогноза.
