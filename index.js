@@ -138,6 +138,7 @@ import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
   var elements = document.querySelectorAll(".tablinks");
   for (let i = 0; i < elements.length; i++) {
     //elements[i].onclick = function(evt, tabName){
+	console.log(i);
 	elements[i].onclick = function(evt){
       var tabcontent, tablinks;
 	  tabcontent = document.getElementsByClassName("tabcontent");
