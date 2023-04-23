@@ -27,7 +27,7 @@ async function get_forecast_openweathermap_1(i) {
 	let local_time = UTCHours + timezone;
 	if (local_time < 0) local_time += 24;
 	if (local_time > 23) local_time = local_time - 24;
-	console.log("local_time:",local_time);
+	//console.log("local_time:",local_time);
 	// Если местное время больше 13 и меньше 15 (включительно), то пытаемся записать прогноз
 	if ((local_time > 12) && (local_time < 16)) {
 	  console.log("Проверяем, зписан ли прогноз для",place_name);
