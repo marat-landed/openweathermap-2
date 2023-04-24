@@ -42,7 +42,7 @@ import { database_URL, openweathermap_place } from "./js/myconst.js";
 		    await get_last_forecast_param (path).then ((value) => {
 		      //console.log(path, value[value.length-1]);
 			  // Здесь вызывать функцию построения графика параметра
-			  console.log(path0);
+			  //console.log(path0);
 			  all_forecasts[path0][param_name] = value; // value.length-1
 			  all_last_forecasts[path0][param_name] = value[0]; // value.length-1
 			  //console.log(path, all_last_forecasts);
