@@ -45,7 +45,7 @@ import { database_URL, openweathermap_place } from "./js/myconst.js";
 			  console.log(path0);
 			  all_forecasts[path0][param_name] = value; // value.length-1
 			  all_last_forecasts[path0][param_name] = value[0]; // value.length-1
-			  console.log(path, all_last_forecasts);
+			  //console.log(path, all_last_forecasts);
 		    })
 	      }
 		}

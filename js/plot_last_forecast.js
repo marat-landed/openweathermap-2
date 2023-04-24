@@ -10,27 +10,24 @@ function plot_last_forecast(archive) {
   // {"today_utc": 1676538000,"temp_max":[23,23,23,23,23,23,23,23],"temp_min":[12,12,12,23,23,23,23,23],
   //  "pressure"...,"clouds"...,"precipitation"...,"wind_speed"...,"wind_direct"...,"weather_icon_num"...}
   //console.log(archive);
-  /* Получаем объект вида:
-  "McMurdo/forecast/clouds": "1680771600 100 100 100 100 100 100 100 100"
-​  "McMurdo/forecast/humidity": "1680771600 55 58 72 57 53 44 51 89"
-​  "McMurdo/forecast/pop": "1680771600 68 100 41 20 36 0 100 72"
-​  "McMurdo/forecast/pressure": "1680771600 1012 1017 1022 1025 1024 1020 1008 1001"
-​  "McMurdo/forecast/rain": "1680771600 2.06 5.19 2.31 0.19 1.08 0 3.98 2.27"
-​  "McMurdo/forecast/snow": "1680771600 0 0 0 0 0 0 0 0"
-​  "McMurdo/forecast/temp/max": "1680771600 16.53 16.2 10.63 13.87 15.16 16.28 10.81 8.96"
-​  "McMurdo/forecast/temp/min": "1680771600 10.89 10.21 8.37 6.84 9.79 7.81 7.65 7.38"
-​  "McMurdo/forecast/weather/icon": "1680771600 10d 10d 10d 10d 10d 04d 10d 10d"
-​  "McMurdo/forecast/wind_deg": "1680771600 82 86 91 102 103 113 84 332"
-​  "McMurdo/forecast/wind_speed": "1680771600 6.25 6.31 5.7 4.11 4.64 5.6 5.21 6.09"
-  */
+  /* Получаем объект вида (объекты (н.п.) в объекте archive):
+  Object { Pisochyn: {…}, Anchorage: {…}, Ushuaia: {…}, Addis_Ababa: {…}, Oymyakon: {…}, McMurdo: {…} }
+  ...
+    Pisochyn: Object { "temp/min":
+​    Anchorage: Object { "temp/min": "1682283600 -4.45 -5.46 -0.72 0.93 2.53 2.63 3.93 4.98", "temp/max": "1682
+    Ushuaia: {…}, 
+	Addis_Ababa: {…}, 
+	Oymyakon: {…}, 
+	McMurdo
+​  */
 
   let last_forecast = {};
   
   //console.log("archive:",archive);
   
-  var keys = Object.keys(archive);
+  var keys = Object.keys(archive['McMurdo']);
   for (var key = 0; key < keys.length; key++){
-	var param = archive[keys[key]];
+	var param = archive['McMurdo'][keys[key]];
 	// param - строка прогноза вида: 1676538000 -4 -3 2 2 0 2 2 4
 	const myArray = param.split(" "); // [ "1678093200", "-1.09", "-0.75", "0.41", "6.27", "0.35", "-0.61", "3.14", "1.09" ]
 	//console.log("myArray:", myArray);
