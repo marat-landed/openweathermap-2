@@ -36,7 +36,7 @@ function plot_last_forecast(archive) {
 	myArray.forEach((element, index) => {
 	  if ((key==0) && (index==0)) last_forecast["today_utc"] = element;
 	  let val;
-	  if (keys[key]=="McMurdo/forecast/weather/icon") val = element; 
+	  if (keys[key]=="weather/icon") val = element; 
 	  else val = Number(element);
       //if ((keys[key]=="precipitation") || (keys[key]=="wind_speed")) val = val/100.;
       if (index>0) last_forecast[keys[key]].push(val);	  
@@ -69,20 +69,20 @@ function plotChart(jsonValue) {
   //for (var key = 1; key < 8; key++){
   for (var key = 0; key < keys.length; key++){
 	if (keys[key]=="today_utc") continue;
-	if ((keys[key]=="McMurdo/forecast/wind_speed") || (keys[key]=="McMurdo/forecast/wind_deg")) {
-	  var param = jsonValue["McMurdo/forecast/wind_speed"]; // wind_speed
-	  var param1 = jsonValue["McMurdo/forecast/wind_deg"]; // wind_direct
-	} else if (keys[key]=="McMurdo/forecast/clouds") {
-	  var param = jsonValue["McMurdo/forecast/clouds"]; // clouds
-	  var param1 = jsonValue["McMurdo/forecast/weather/icon"]; // weather_icon_num
+	if ((keys[key]=="wind_speed") || (keys[key]=="wind_deg")) {
+	  var param = jsonValue["wind_speed"]; // wind_speed
+	  var param1 = jsonValue["wind_deg"]; // wind_direct
+	} else if (keys[key]=="clouds") {
+	  var param = jsonValue["clouds"]; // clouds
+	  var param1 = jsonValue["weather/icon"]; // weather_icon_num
 	} else {
 	  var param = jsonValue[keys[key]];
 	}
 	param.forEach((element, index) => {
-	  if ((keys[key]=="McMurdo/forecast/wind_speed") || (keys[key]=="McMurdo/forecast/wind_deg")) { // ветер: сорость (м/с) и направление
+	  if ((keys[key]=="wind_speed") || (keys[key]=="wind_deg")) { // ветер: сорость (м/с) и направление
 	    data.push([param[index], param1[index]]);
 	  }
-	  else if (keys[key]=="McMurdo/forecast/clouds") {
+	  else if (keys[key]=="clouds") {
 		var y = param[index]; 
 		var weather_icon_str = param1[index];
 		var marker = {
@@ -98,59 +98,59 @@ function plotChart(jsonValue) {
 	  }
 	});
 				
-	if (keys[key]=="McMurdo/forecast/temp/max") { // temp_max
+	if (keys[key]=="temp/max") { // temp_max
 	  chartT.series[0].update({
 	    pointStart: pointStart_curr,
 		data: data //data.data
 	  })	
-	} else if (keys[key]=="McMurdo/forecast/temp/min") { // temp_min
+	} else if (keys[key]=="temp/min") { // temp_min
 	  chartT.series[1].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })	
 	} 
-	else if (keys[key]=="McMurdo/forecast/pressure") { // pressure
+	else if (keys[key]=="pressure") { // pressure
 	  chartPW.series[0].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })
 	}
-	else if (keys[key]=="McMurdo/forecast/wind_speed") { // McMurdo/forecast/wind_speed
+	else if (keys[key]=="wind_speed") { // McMurdo/forecast/wind_speed
 	  chartPW.series[1].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })
-	} else if (keys[key]=="McMurdo/forecast/wind_deg") { // McMurdo/forecast/wind_deg
+	} else if (keys[key]=="wind_deg") { // McMurdo/forecast/wind_deg
 	  chartPW.series[2].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })
 	}
-	else if (keys[key]=="McMurdo/forecast/clouds") { // clouds
+	else if (keys[key]=="clouds") { // clouds
 	  chartWC.series[0].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })
 	} 
-	else if (keys[key]=="McMurdo/forecast/pop") { // McMurdo/forecast/pop
+	else if (keys[key]=="pop") { // McMurdo/forecast/pop
 	  chartHPP.series[0].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })
 	}
-	else if (keys[key]=="McMurdo/forecast/rain") { // McMurdo/forecast/rain
+	else if (keys[key]=="rain") { // McMurdo/forecast/rain
 	  chartHPP.series[1].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })
 	}
-	else if (keys[key]=="McMurdo/forecast/snow") { // McMurdo/forecast/snow
+	else if (keys[key]=="snow") { // McMurdo/forecast/snow
 	  chartHPP.series[2].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })
 	}
-	else if (keys[key]=="McMurdo/forecast/humidity") { // McMurdo/forecast/humidity
+	else if (keys[key]=="humidity") { // McMurdo/forecast/humidity
 	  chartHPP.series[3].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
