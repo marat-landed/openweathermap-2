@@ -4,7 +4,7 @@ import { plot_dist_grath } from "./js/plot_dist_grath.js";
 import { plot_dist_tab } from "./js/plot_dist_tab.js";
 import { plot_err_grath } from "./js/plot_err_grath.js";
 import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
-import {database_URL} from "./js/myconst.js";
+import { database_URL, openweathermap_place } from "./js/myconst.js";
 	
 	    const firebaseConfig = {
 	      //apiKey: "AIzaSyDZCBYYnoI8O9rWW_V9PhksdRppDWfSG4o", 
@@ -32,8 +32,9 @@ import {database_URL} from "./js/myconst.js";
 	  const all_dist = new Object();
 	  
 	  async function get_last_forecasts() {
-	    for (var part_name_no=0; part_name_no < path_name.length; part_name_no++) {
-	      var path = "McMurdo/forecast/" + path_name[part_name_no];
+		let path0 = openweathermap_place[5][2];
+		for (let part_name_no=0; part_name_no < path_name.length; part_name_no++) {
+	      let path = path0 + "/forecast/" + path_name[part_name_no];
 		  await get_last_forecast_param (path).then ((value) => {
 		    //console.log(path, value[value.length-1]);
 			// Здесь вызывать функцию построения графика параметра
