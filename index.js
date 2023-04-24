@@ -39,7 +39,7 @@ import {database_URL} from "./js/myconst.js";
 			// Здесь вызывать функцию построения графика параметра
 			all_forecasts[path] = value; // value.length-1
 			all_last_forecasts[path] = value[0]; // value.length-1
-			console.log(path, all_last_forecasts[path]);
+			//console.log(path, all_last_forecasts[path]);
 		  })
 	    }
 	  }
