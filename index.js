@@ -32,17 +32,19 @@ import { database_URL, openweathermap_place } from "./js/myconst.js";
 	  const all_dist = new Object();
 	  
 	  async function get_last_forecasts() {
-		let path0 = openweathermap_place[5][2];
-		for (let part_name_no=0; part_name_no < path_name.length; part_name_no++) {
-	      let path = path0 + "/forecast/" + path_name[part_name_no];
-		  await get_last_forecast_param (path).then ((value) => {
-		    //console.log(path, value[value.length-1]);
-			// Здесь вызывать функцию построения графика параметра
-			all_forecasts[path] = value; // value.length-1
-			all_last_forecasts[path] = value[0]; // value.length-1
-			//console.log(path, all_last_forecasts[path]);
-		  })
-	    }
+		for (let i=0; i<openweathermap_place.length; i++) {
+		  let path0 = openweathermap_place[i][2];
+		  for (let part_name_no=0; part_name_no < path_name.length; part_name_no++) {
+	        let path = path0 + "/forecast/" + path_name[part_name_no];
+		    await get_last_forecast_param (path).then ((value) => {
+		      //console.log(path, value[value.length-1]);
+			  // Здесь вызывать функцию построения графика параметра
+			  all_forecasts[path0][path_name[part_name_no]] = value; // value.length-1
+			  all_last_forecasts[path0][path_name[part_name_no]] = value[0]; // value.length-1
+			  console.log(path, all_last_forecasts);
+		    })
+	      }
+		}
 	  }
 	   
 	  async function prepare_last_forecasts() {
