@@ -11,17 +11,17 @@ function plot_last_forecast(archive) {
   //  "pressure"...,"clouds"...,"precipitation"...,"wind_speed"...,"wind_direct"...,"weather_icon_num"...}
   //console.log(archive);
   /* Получаем объект вида:
-  "forec_gh/forecast/clouds": "1680771600 100 100 100 100 100 100 100 100"
-​  "forec_gh/forecast/humidity": "1680771600 55 58 72 57 53 44 51 89"
-​  "forec_gh/forecast/pop": "1680771600 68 100 41 20 36 0 100 72"
-​  "forec_gh/forecast/pressure": "1680771600 1012 1017 1022 1025 1024 1020 1008 1001"
-​  "forec_gh/forecast/rain": "1680771600 2.06 5.19 2.31 0.19 1.08 0 3.98 2.27"
-​  "forec_gh/forecast/snow": "1680771600 0 0 0 0 0 0 0 0"
-​  "forec_gh/forecast/temp/max": "1680771600 16.53 16.2 10.63 13.87 15.16 16.28 10.81 8.96"
-​  "forec_gh/forecast/temp/min": "1680771600 10.89 10.21 8.37 6.84 9.79 7.81 7.65 7.38"
-​  "forec_gh/forecast/weather/icon": "1680771600 10d 10d 10d 10d 10d 04d 10d 10d"
-​  "forec_gh/forecast/wind_deg": "1680771600 82 86 91 102 103 113 84 332"
-​  "forec_gh/forecast/wind_speed": "1680771600 6.25 6.31 5.7 4.11 4.64 5.6 5.21 6.09"
+  "McMurdo/forecast/clouds": "1680771600 100 100 100 100 100 100 100 100"
+​  "McMurdo/forecast/humidity": "1680771600 55 58 72 57 53 44 51 89"
+​  "McMurdo/forecast/pop": "1680771600 68 100 41 20 36 0 100 72"
+​  "McMurdo/forecast/pressure": "1680771600 1012 1017 1022 1025 1024 1020 1008 1001"
+​  "McMurdo/forecast/rain": "1680771600 2.06 5.19 2.31 0.19 1.08 0 3.98 2.27"
+​  "McMurdo/forecast/snow": "1680771600 0 0 0 0 0 0 0 0"
+​  "McMurdo/forecast/temp/max": "1680771600 16.53 16.2 10.63 13.87 15.16 16.28 10.81 8.96"
+​  "McMurdo/forecast/temp/min": "1680771600 10.89 10.21 8.37 6.84 9.79 7.81 7.65 7.38"
+​  "McMurdo/forecast/weather/icon": "1680771600 10d 10d 10d 10d 10d 04d 10d 10d"
+​  "McMurdo/forecast/wind_deg": "1680771600 82 86 91 102 103 113 84 332"
+​  "McMurdo/forecast/wind_speed": "1680771600 6.25 6.31 5.7 4.11 4.64 5.6 5.21 6.09"
   */
 
   let last_forecast = {};
@@ -38,7 +38,7 @@ function plot_last_forecast(archive) {
 	myArray.forEach((element, index) => {
 	  if ((key==0) && (index==0)) last_forecast["today_utc"] = element;
 	  let val;
-	  if (keys[key]=="forec_gh/forecast/weather/icon") val = element; 
+	  if (keys[key]=="McMurdo/forecast/weather/icon") val = element; 
 	  else val = Number(element);
       //if ((keys[key]=="precipitation") || (keys[key]=="wind_speed")) val = val/100.;
       if (index>0) last_forecast[keys[key]].push(val);	  
@@ -71,20 +71,20 @@ function plotChart(jsonValue) {
   //for (var key = 1; key < 8; key++){
   for (var key = 0; key < keys.length; key++){
 	if (keys[key]=="today_utc") continue;
-	if ((keys[key]=="forec_gh/forecast/wind_speed") || (keys[key]=="forec_gh/forecast/wind_deg")) {
-	  var param = jsonValue["forec_gh/forecast/wind_speed"]; // wind_speed
-	  var param1 = jsonValue["forec_gh/forecast/wind_deg"]; // wind_direct
-	} else if (keys[key]=="forec_gh/forecast/clouds") {
-	  var param = jsonValue["forec_gh/forecast/clouds"]; // clouds
-	  var param1 = jsonValue["forec_gh/forecast/weather/icon"]; // weather_icon_num
+	if ((keys[key]=="McMurdo/forecast/wind_speed") || (keys[key]=="McMurdo/forecast/wind_deg")) {
+	  var param = jsonValue["McMurdo/forecast/wind_speed"]; // wind_speed
+	  var param1 = jsonValue["McMurdo/forecast/wind_deg"]; // wind_direct
+	} else if (keys[key]=="McMurdo/forecast/clouds") {
+	  var param = jsonValue["McMurdo/forecast/clouds"]; // clouds
+	  var param1 = jsonValue["McMurdo/forecast/weather/icon"]; // weather_icon_num
 	} else {
 	  var param = jsonValue[keys[key]];
 	}
 	param.forEach((element, index) => {
-	  if ((keys[key]=="forec_gh/forecast/wind_speed") || (keys[key]=="forec_gh/forecast/wind_deg")) { // ветер: сорость (м/с) и направление
+	  if ((keys[key]=="McMurdo/forecast/wind_speed") || (keys[key]=="McMurdo/forecast/wind_deg")) { // ветер: сорость (м/с) и направление
 	    data.push([param[index], param1[index]]);
 	  }
-	  else if (keys[key]=="forec_gh/forecast/clouds") {
+	  else if (keys[key]=="McMurdo/forecast/clouds") {
 		var y = param[index]; 
 		var weather_icon_str = param1[index];
 		var marker = {
@@ -100,59 +100,59 @@ function plotChart(jsonValue) {
 	  }
 	});
 				
-	if (keys[key]=="forec_gh/forecast/temp/max") { // temp_max
+	if (keys[key]=="McMurdo/forecast/temp/max") { // temp_max
 	  chartT.series[0].update({
 	    pointStart: pointStart_curr,
 		data: data //data.data
 	  })	
-	} else if (keys[key]=="forec_gh/forecast/temp/min") { // temp_min
+	} else if (keys[key]=="McMurdo/forecast/temp/min") { // temp_min
 	  chartT.series[1].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })	
 	} 
-	else if (keys[key]=="forec_gh/forecast/pressure") { // pressure
+	else if (keys[key]=="McMurdo/forecast/pressure") { // pressure
 	  chartPW.series[0].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })
 	}
-	else if (keys[key]=="forec_gh/forecast/wind_speed") { // forec_gh/forecast/wind_speed
+	else if (keys[key]=="McMurdo/forecast/wind_speed") { // McMurdo/forecast/wind_speed
 	  chartPW.series[1].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })
-	} else if (keys[key]=="forec_gh/forecast/wind_deg") { // forec_gh/forecast/wind_deg
+	} else if (keys[key]=="McMurdo/forecast/wind_deg") { // McMurdo/forecast/wind_deg
 	  chartPW.series[2].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })
 	}
-	else if (keys[key]=="forec_gh/forecast/clouds") { // clouds
+	else if (keys[key]=="McMurdo/forecast/clouds") { // clouds
 	  chartWC.series[0].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })
 	} 
-	else if (keys[key]=="forec_gh/forecast/pop") { // forec_gh/forecast/pop
+	else if (keys[key]=="McMurdo/forecast/pop") { // McMurdo/forecast/pop
 	  chartHPP.series[0].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })
 	}
-	else if (keys[key]=="forec_gh/forecast/rain") { // forec_gh/forecast/rain
+	else if (keys[key]=="McMurdo/forecast/rain") { // McMurdo/forecast/rain
 	  chartHPP.series[1].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })
 	}
-	else if (keys[key]=="forec_gh/forecast/snow") { // forec_gh/forecast/snow
+	else if (keys[key]=="McMurdo/forecast/snow") { // McMurdo/forecast/snow
 	  chartHPP.series[2].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
 	  })
 	}
-	else if (keys[key]=="forec_gh/forecast/humidity") { // forec_gh/forecast/humidity
+	else if (keys[key]=="McMurdo/forecast/humidity") { // McMurdo/forecast/humidity
 	  chartHPP.series[3].update({
 		pointStart: pointStart_curr,
 		data: data //data.data
