@@ -56,7 +56,7 @@ import { database_URL, openweathermap_place } from "./js/myconst.js";
 		  //console.log(all_last_forecasts);
 		  //console.log("Передаем для построения графиков");
 		  plot_last_forecast(all_last_forecasts); // Выводим последний прогноз
-		  plot_all_forecasts(all_forecasts); // Строим таблицы всех прогнозов
+		  //plot_all_forecasts(all_forecasts); // Строим таблицы всех прогнозов
 		})
 	  }
 	  
