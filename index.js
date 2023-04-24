@@ -4,11 +4,11 @@ import { plot_dist_grath } from "./js/plot_dist_grath.js";
 import { plot_dist_tab } from "./js/plot_dist_tab.js";
 import { plot_err_grath } from "./js/plot_err_grath.js";
 import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
+import {database_URL} from "./js/myconst.js";
 	
-	    var firebaseConfig = {
+	    const firebaseConfig = {
 	      //apiKey: "AIzaSyDZCBYYnoI8O9rWW_V9PhksdRppDWfSG4o", 
-	      //databaseURL: "https://probe-23-02-2023-default-rtdb.europe-west1.firebasedatabase.app"
-		  databaseURL: "https://probe-web-default-rtdb.europe-west1.firebasedatabase.app",
+	      databaseURL: database_URL //"https://probe-web-default-rtdb.europe-west1.firebasedatabase.app",
         };
 	  
       // Initialize Firebase
@@ -33,7 +33,7 @@ import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
 	  
 	  async function get_last_forecasts() {
 	    for (var part_name_no=0; part_name_no < path_name.length; part_name_no++) {
-	      var path = "forec_gh/forecast/" + path_name[part_name_no];
+	      var path = "McMurdo/forecast/" + path_name[part_name_no];
 		  await get_last_forecast_param (path).then ((value) => {
 		    //console.log(path, value[value.length-1]);
 			// Здесь вызывать функцию построения графика параметра
@@ -66,7 +66,7 @@ import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
 	  
 	  async function get_dist() {
 	    for (var part_name_no=0; part_name_no < path_name.length-1; part_name_no++) {
-	      var path = "forec_gh/distrib/" + path_name[part_name_no];
+	      var path = "McMurdo/distrib/" + path_name[part_name_no];
 		  await get_dist_param (path).then ((value) => {
 		    //console.log(path, value[value.length-1]);
 			// Здесь вызывать функцию построения графика параметра
