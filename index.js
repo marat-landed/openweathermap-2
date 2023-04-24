@@ -35,6 +35,7 @@ import { database_URL, openweathermap_place } from "./js/myconst.js";
 		for (let i=0; i<openweathermap_place.length; i++) {
 		  let path0 = openweathermap_place[i][2];
 		  all_forecasts[path0] = {};
+		  all_last_forecasts[path0] = {};
 		  for (let part_name_no=0; part_name_no < path_name.length; part_name_no++) {
 			let param_name = path_name[part_name_no];
 	        let path = path0 + "/forecast/" + param_name;
