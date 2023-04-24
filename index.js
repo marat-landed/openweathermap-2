@@ -36,12 +36,14 @@ import { database_URL, openweathermap_place } from "./js/myconst.js";
 		  let path0 = openweathermap_place[i][2];
 		  console.log(path0);
 		  for (let part_name_no=0; part_name_no < path_name.length; part_name_no++) {
-	        let path = path0 + "/forecast/" + path_name[part_name_no];
+			let param_name = path_name[part_name_no];
+	        let path = path0 + "/forecast/" + param_name;
 		    await get_last_forecast_param (path).then ((value) => {
 		      //console.log(path, value[value.length-1]);
 			  // Здесь вызывать функцию построения графика параметра
-			  all_forecasts[path0][path_name[part_name_no]] = value; // value.length-1
-			  all_last_forecasts[path0][path_name[part_name_no]] = value[0]; // value.length-1
+			  console.log(path0);
+			  all_forecasts[path0][param_name]] = value; // value.length-1
+			  all_last_forecasts[path0][param_name] = value[0]; // value.length-1
 			  console.log(path, all_last_forecasts);
 		    })
 	      }
