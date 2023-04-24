@@ -27,14 +27,14 @@ import { database_URL, openweathermap_place } from "./js/myconst.js";
 	  
 	  const path_name = ["temp/min", "temp/max", "pressure", "humidity", "wind_speed",
 	    "wind_deg", "clouds", "pop", "rain", "snow", "weather/icon"];
-	  const all_last_forecasts = new Object();
-	  const all_forecasts = new Object();
+	  const all_last_forecasts = {};
+	  const all_forecasts = {};
 	  const all_dist = new Object();
 	  
 	  async function get_last_forecasts() {
 		for (let i=0; i<openweathermap_place.length; i++) {
 		  let path0 = openweathermap_place[i][2];
-		  console.log(path0);
+		  all_forecasts[path0] = {};
 		  for (let part_name_no=0; part_name_no < path_name.length; part_name_no++) {
 			let param_name = path_name[part_name_no];
 	        let path = path0 + "/forecast/" + param_name;
