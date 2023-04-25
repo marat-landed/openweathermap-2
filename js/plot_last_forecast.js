@@ -57,7 +57,7 @@ function plotChart(jsonValue) {
   var month = date.getMonth()+1;
   var year = date.getFullYear();
   document.getElementById("place_name").textContent = day + '-' + month + '-' + year;
-  document.getElementById("forecast_date").textContent = openweathermap_place[5][3];
+  document.getElementById("forecast_date").textContent = openweathermap_place[5][3] ;
   
   create_chart_temp('div-chart-temperature'); // chartT: 'div-chart-temperature'
   create_chart_weather_clouds('div-chart-weather-clouds'); // chartWC: 'div-chart-weather-clouds'
