@@ -6,6 +6,7 @@ var chartT, // 'chart-temperature'
 	chartPW; // 'div-chart-wind-press'
 	
 function plot_last_forecast(archive, openweathermap_place) {
+  console.log("plot:",openweathermap_place);
   // Из архива всех прогнозов необходимо сформировать запись вида:
   // {"today_utc": 1676538000,"temp_max":[23,23,23,23,23,23,23,23],"temp_min":[12,12,12,23,23,23,23,23],
   //  "pressure"...,"clouds"...,"precipitation"...,"wind_speed"...,"wind_direct"...,"weather_icon_num"...}
