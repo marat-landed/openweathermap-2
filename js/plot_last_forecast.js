@@ -5,7 +5,7 @@ var chartT, // 'chart-temperature'
 	chartHPP, // 'div-chart-humid-pop-precip'
 	chartPW; // 'div-chart-wind-press'
 	
-function plot_last_forecast(archive) {
+function plot_last_forecast(archive, openweathermap_place) {
   // Из архива всех прогнозов необходимо сформировать запись вида:
   // {"today_utc": 1676538000,"temp_max":[23,23,23,23,23,23,23,23],"temp_min":[12,12,12,23,23,23,23,23],
   //  "pressure"...,"clouds"...,"precipitation"...,"wind_speed"...,"wind_direct"...,"weather_icon_num"...}
@@ -56,7 +56,8 @@ function plotChart(jsonValue) {
   var day = date.getDate();
   var month = date.getMonth()+1;
   var year = date.getFullYear();
-  document.getElementById("forecast_date").textContent = day + '-' + month + '-' + year;
+  document.getElementById("place_name").textContent = day + '-' + month + '-' + year;
+  document.getElementById("forecast_date").textContent = openweathermap_place[5][3];
   
   create_chart_temp('div-chart-temperature'); // chartT: 'div-chart-temperature'
   create_chart_weather_clouds('div-chart-weather-clouds'); // chartWC: 'div-chart-weather-clouds'
