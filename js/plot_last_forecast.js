@@ -46,7 +46,7 @@ function plot_last_forecast(archive, openweathermap_place) {
 }
 
 //Plot temperature in the temperature chart
-function plotChart(jsonValue) {
+function plotChart(jsonValue, openweathermap_place) {
   var keys = Object.keys(jsonValue);
   
   // Преобразуем ко времени 00 часов
