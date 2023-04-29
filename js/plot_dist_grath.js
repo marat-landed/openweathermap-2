@@ -2,35 +2,56 @@
 // 20-07-2022 Загрузка архива прогнозов на страницу Архив
 // 04-04-2023 Построение графиков распределения ошибок прогнозов
 
-//import {Chart_title_arr} from "/js/myconst.js";
-//import {yAxis_title_arr} from "/js/myconst.js";
+//var all_dist_, Chart_title_arr_, param_name_str_;
+var chartEr_distr = []; // 'chart-distribution-errors'
 
-//import {Chart_title_arr} from "./js/myconst.js";
-//import {yAxis_title_arr} from "./js/myconst.js";
-
-import {Chart_title_arr, yAxis_title_arr, param_scale} from "./myconst.js";
-
-//var chartT, // 'chart-temperature'
-//    chartClPr; // 'chart-clouds-precipitation'
-export function plot_dist_grath(all_dist) {
-  //var statistics = last_statistics[0]; // Массив last_statistics имеет один единственный элемент
-  //plotChart(statistics);
-  plotDistribution(all_dist);
+function plot_dist_grath(all_dist, openweathermap_place) {
+  // Запоминаем
+  //all_dist_ = all_dist;
+  //Chart_title_arr_ = Chart_title_arr;
+  //param_name_str_ = param_name_str;
+  // Создаем Radiogroup с названиями места
+  // Таблица для размещения названий мест
+  let table = document.createElement('table');
+  let tbody = document.createElement('tbody');
+  table.classList.add("table_place");
+  table.appendChild(tbody);
+  document.getElementById('place-graph-dist').appendChild(table);
+  let row;
+	
+  for(let i=0; i < openweathermap_place.length; i++) {
+	let place_value = i;
+	let place_name = openweathermap_place[i][3];
+	let output = '<input type="radio" id="place_dist_graph_radioButton_' + i + '" name="place_dist_graph" value="' + place_value + '" onclick="data_dist_graph_update(value);">';
+	output+= ' &nbsp; <label for="' + place_value + '">' + place_name + '</label> &nbsp;';
+	
+	if (i%2 == 0) {
+	  row = document.createElement('tr');
+	  tbody.appendChild(row);
+	}
+	let td = document.createElement('td');
+	td.innerHTML = output;
+	row.appendChild(td);
+  }
+  document.getElementById("place_dist_graph_radioButton_0").click();
+}  
+  
+function data_dist_graph_update (place_index) {
+  let dist = all_dist_[place_index];
+  plotDistribution(dist);
 }
 
-var chartEr_distr = []; // 'chart-distribution-errors'
-var error_statistics_mem = [];
-
-function plotDistribution(jsonValue) {
+function plotDistribution(dist) {
   // jsonValue - объект.
   // Key: distribution/temp/min, distribution/temp/max,..., distribution/snow
   // Каждый элемент объекта - массив из 7 значений - по дням прогноза.
   // Каждое значение - строка вида "6 1 0 2 0 0 0 0 0 0 0".
   // Каждое элемент в строке - количество ошибок, находящихся в соответствующем интервале.
+  console.log(dist);
+  return;
   
-  var keys = Object.keys(jsonValue);
   // Сколько дней ведется наблюдение
-  let param1 = jsonValue[keys[0]];
+  let param1 = dist[keys[0]];
   let str1 = param1[0];
   let arr = str1.split(" ").map(Number);
   let sum = 0;
@@ -41,7 +62,7 @@ function plotDistribution(jsonValue) {
   document.getElementById("stat_day_err").textContent = sum;
   
   for (var key = 0; key < keys.length; key++){
-	var param = jsonValue[keys[key]];
+	var param = dist[keys[key]];
 	
 	// Создаем div для графика
 	let div = document.createElement('div');
@@ -85,6 +106,7 @@ function plotDistribution(jsonValue) {
   }
 }
 
+/*
 function myListener() {
   // this.name = 0-6, 3-2,...
   let myArray = this.name.split("-");
@@ -102,6 +124,7 @@ function myListener() {
 	series.setVisible(false);
   }
 }
+*/
 
 function create_chart_error_distr(renderTo, Chart_title, xAxis_title, xAxis_categories) {
   let chart = new Highcharts.chart(renderTo,{
