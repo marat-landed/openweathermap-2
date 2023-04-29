@@ -23,7 +23,7 @@ function plot_last_forecast(archive, openweathermap_place) {
 
   let last_forecast = {};
   
-  //console.log("archive:",archive);
+  console.log("archive:",archive);
   
   //var keys = Object.keys(archive['McMurdo']);
   var keys = Object.keys(archive[5]);
