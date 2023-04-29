@@ -2,14 +2,14 @@
 // 20-07-2022 Загрузка архива прогнозов на страницу Архив
 // 04-04-2023 Построение графиков распределения ошибок прогнозов
 
-//var all_dist_, Chart_title_arr_, param_name_str_;
+var all_dist_, Chart_title_arr_, param_name_str_;
 var chartEr_distr = []; // 'chart-distribution-errors'
 
 function plot_dist_grath(all_dist, openweathermap_place) {
   // Запоминаем
-  //all_dist_ = all_dist;
-  //Chart_title_arr_ = Chart_title_arr;
-  //param_name_str_ = param_name_str;
+  all_dist_ = all_dist;
+  Chart_title_arr_ = Chart_title_arr;
+  param_name_str_ = param_name_str;
   // Создаем Radiogroup с названиями места
   // Таблица для размещения названий мест
   let table = document.createElement('table');
