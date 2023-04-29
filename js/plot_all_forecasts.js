@@ -50,12 +50,12 @@ function data_arch_update (place_index) {
   // Очищаем место для таблиц
   document.getElementById('div_table_archive').innerHTML = '';
   var keys = Object.keys(forecasts);
-  for (var key = 1; key < keys.length; key++){
-	var param = forecasts[keys[key]];
+  for (let i = 0; i < Chart_title_arr_.length; i++){
+	var param = forecasts[Chart_title_arr_[i]];
 	// Создаем подпись параметра
 	var parag = document.createElement('p');
 	parag.style.cssText += 'font-size: 14px; padding: 10px; font-weight: bold;';
-	parag.innerText = Chart_title_arr_[key];
+	parag.innerText = Chart_title_arr_[i];
 	document.getElementById('div_table_archive').appendChild(parag);
 	
 	let table = document.createElement('table');
