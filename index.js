@@ -38,7 +38,7 @@ import { database_URL, openweathermap_place } from "./js/myconst.js";
 		  
 		  let last_forecasts = {};
 		  all_last_forecasts.push(last_forecasts);
-		  last_forecasts.palace_name = path0;
+		  last_forecasts.place_name = path0;
 		  //all_last_forecasts[path0] = {};
 		  
 		  for (let part_name_no=0; part_name_no < path_name.length; part_name_no++) {

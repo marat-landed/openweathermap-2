@@ -30,38 +30,49 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
   
   console.log("last_forecasts:",last_forecasts);
   var keys = Object.keys(last_forecasts);
+  let place_name, today_utc, forecast;
   for (var key = 0; key < keys.length; key++){
+	// 1-й элемент - имя места: Песочин,...
+	// 2-й элемент - дата
+	// 3, 4, 5... - параметры
+	if (key == 0) {
+	  place_name = last_forecasts[keys[key]];
+	  continue;
+	}
+	if (key == 1) {
+	  today_utc = last_forecasts[keys[key]];
+	  continue;
+	}
 	var param = last_forecasts[keys[key]];
 	//console.log(param);
 	// param - строка прогноза вида: 1676538000 -4 -3 2 2 0 2 2 4
 	const myArray = param.split(" "); // [ "1678093200", "-1.09", "-0.75", "0.41", "6.27", "0.35", "-0.61", "3.14", "1.09" ]
 	//console.log("myArray:", myArray);
-	last_forecast[keys[key]]=[];
+	forecast[keys[key]]=[];
 	myArray.forEach((element, index) => {
-	  if ((key==0) && (index==0)) last_forecast["today_utc"] = element;
 	  let val;
 	  if (keys[key]=="weather/icon") val = element; 
 	  else val = Number(element);
       //if ((keys[key]=="precipitation") || (keys[key]=="wind_speed")) val = val/100.;
-      if (index>0) last_forecast[keys[key]].push(val);	  
+      forecast[keys[key]].push(val);	  
 	})
   }
-  plotChart(last_forecast, openweathermap_place[5][3]);
+  plotChart(place_name, today_utc, forecast);
 }
 
 //Plot temperature in the temperature chart
-function plotChart(jsonValue, place) {
-  var keys = Object.keys(jsonValue);
+function plotChart(place_name, today_utc, forecast) {
+  var keys = Object.keys(forecast);
   
   // Преобразуем ко времени 00 часов
-  var pointStart_curr = parseInt(jsonValue.today_utc/86400)*86400000;
+  var pointStart_curr = parseInt(today_utc/86400)*86400000;
   //console.log("pointStart_curr:",pointStart_curr); // 1649808000000
-  var date = new Date(jsonValue.today_utc*1000);
+  var date = new Date(today_utc*1000);
   var day = date.getDate();
   var month = date.getMonth()+1;
   var year = date.getFullYear();
   document.getElementById("forecast_date").textContent = day + '-' + month + '-' + year;
-  document.getElementById("place_name").textContent = place;
+  document.getElementById("place_name").textContent = place_name;
   
   create_chart_temp('div-chart-temperature'); // chartT: 'div-chart-temperature'
   create_chart_weather_clouds('div-chart-weather-clouds'); // chartWC: 'div-chart-weather-clouds'
@@ -75,13 +86,13 @@ function plotChart(jsonValue, place) {
   for (var key = 0; key < keys.length; key++){
 	if (keys[key]=="today_utc") continue;
 	if ((keys[key]=="wind_speed") || (keys[key]=="wind_deg")) {
-	  var param = jsonValue["wind_speed"]; // wind_speed
-	  var param1 = jsonValue["wind_deg"]; // wind_direct
+	  var param = forecast["wind_speed"]; // wind_speed
+	  var param1 = forecast["wind_deg"]; // wind_direct
 	} else if (keys[key]=="clouds") {
-	  var param = jsonValue["clouds"]; // clouds
-	  var param1 = jsonValue["weather/icon"]; // weather_icon_num
+	  var param = forecast["clouds"]; // clouds
+	  var param1 = forecast["weather/icon"]; // weather_icon_num
 	} else {
-	  var param = jsonValue[keys[key]];
+	  var param = forecast[keys[key]];
 	}
 	param.forEach((element, index) => {
 	  if ((keys[key]=="wind_speed") || (keys[key]=="wind_deg")) { // ветер: сорость (м/с) и направление
