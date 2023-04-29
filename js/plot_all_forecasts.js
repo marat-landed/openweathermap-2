@@ -43,6 +43,7 @@ export function plot_all_forecasts(all_forecasts, openweathermap_place) {
 }
 
 function data_arch_update (place_index) {
+	/*
   const forecasts = all_forecasts_[place_index];
   var keys = Object.keys(forecasts);
   for (var key = 0; key < keys.length; key++){
@@ -94,4 +95,5 @@ function data_arch_update (place_index) {
 	  })
 	})
   }	
+  */
 }
