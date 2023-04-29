@@ -33,7 +33,7 @@ import { database_URL, openweathermap_place } from "./js/myconst.js";
 	  
 	  async function get_last_forecasts() {
 		for (let i=0; i<openweathermap_place.length; i++) {
-		  let path0 = openweathermap_place[i][2];
+		  let path0 = openweathermap_place[i][3];
 		  all_forecasts[path0] = {};
 		  
 		  let last_forecasts = {};
