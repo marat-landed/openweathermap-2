@@ -43,7 +43,7 @@ import { database_URL, openweathermap_place, Chart_title_arr } from "./js/mycons
 		  
 		  let forecasts = {};
 		  forecasts.place_name = openweathermap_place[i][3];
-		  all_forecasts.push(last_forecasts);
+		  all_forecasts.push(forecasts);
 		  
 		  for (let part_name_no=0; part_name_no < path_name.length; part_name_no++) {
 			let param_name = path_name[part_name_no];
