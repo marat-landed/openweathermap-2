@@ -45,9 +45,11 @@ function plot_all_forecasts(all_forecasts, Chart_title_arr, openweathermap_place
 
 function data_arch_update (place_index) {
   const forecasts = all_forecasts_[place_index];
+  console.log(forecasts);
   var keys = Object.keys(forecasts);
   for (var key = 0; key < keys.length; key++){
 	var param = forecasts[keys[key]];
+	console.log(param);
 	//console.log("key:",keys[key]);
 	//console.log("param",param);
 	
