@@ -60,11 +60,11 @@ import { database_URL, openweathermap_place } from "./js/myconst.js";
 		}
 	  }
 	   
-	  async function prepare_last_forecasts() {
+	  async function prepare_plot_forecasts() {
 	    await get_last_forecasts().then (() => {
 		  //console.log(all_last_forecasts);
 		  //console.log("Передаем для построения графиков");
-		  plot_last_forecast(all_last_forecasts, openweathermap_place); // Выводим последний прогноз
+		  plot_last_forecast(all_last_forecasts); // Выводим последний прогноз
 		  plot_all_forecasts(all_forecasts, openweathermap_place); // Строим таблицы всех прогнозов
 		})
 	  }
@@ -125,7 +125,7 @@ import { database_URL, openweathermap_place } from "./js/myconst.js";
 		  document.getElementById(page_name).innerHTML= this.responseText;
 		  if (page_name == 'forecasts') {
 		    // Подготовка последних прогнозов и передача их для построения графиков
-			prepare_last_forecasts();
+			prepare_plot_forecasts();
 		  } else if (page_name == 'statistics_graph') {
 		    // Статистика прогнозов графики
 			prepare_dist();

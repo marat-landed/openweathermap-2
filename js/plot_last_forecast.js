@@ -1,5 +1,8 @@
 // 02-05-2022 Версия для МК NodeMCU
 // 16-02-2023 Данные и LittleFS
+
+import {openweathermap_place} from "./myconst.js";
+
 var chartT, // 'chart-temperature'
     chartWC, //'div-chart-weather-clouds'
 	chartHPP, // 'div-chart-humid-pop-precip'
@@ -7,7 +10,7 @@ var chartT, // 'chart-temperature'
 	
 var all_last_forecasts_;
 	
-function plot_last_forecast(all_last_forecasts, openweathermap_place) {
+function plot_last_forecast(all_last_forecasts) {
   // Из архива всех прогнозов необходимо сформировать запись вида:
   // {"today_utc": 1676538000,"temp_max":[23,23,23,23,23,23,23,23],"temp_min":[12,12,12,23,23,23,23,23],
   //  "pressure"...,"clouds"...,"precipitation"...,"wind_speed"...,"wind_direct"...,"weather_icon_num"...}
