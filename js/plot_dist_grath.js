@@ -5,7 +5,7 @@
 var all_dist_, Chart_title_arr_, param_name_str_;
 var chartEr_distr = []; // 'chart-distribution-errors'
 
-function plot_dist_grath(all_dist, openweathermap_place) {
+function plot_dist_grath(all_dist, openweathermap_place, Chart_title_arr) {
   // Запоминаем
   all_dist_ = all_dist;
   Chart_title_arr_ = Chart_title_arr;
