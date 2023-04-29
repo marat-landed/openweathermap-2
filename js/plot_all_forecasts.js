@@ -50,7 +50,6 @@ function data_arch_update (place_index) {
   // console.log(forecasts);
   // Очищаем место для таблиц
   document.getElementById('div_table_archive').innerHTML = '';
-  let keys = Object.keys(forecasts);
   for (let i = 0; i < param_name_str_.length; i++){
 	let param_name = param_name_str_[i][0];
 	if (param_name_str_[i].length == 2)

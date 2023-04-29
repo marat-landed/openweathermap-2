@@ -67,7 +67,6 @@ function data_dist_update (place_index) {
   // Очищаем место для таблиц
   document.getElementById('div_dist_tab').innerHTML = ''; 
   
-  var keys = Object.keys(all_dist);
   for (let i = 0; i < param_name_str_.length; i++){
 	let param_name = param_name_str_[i][0];
 	if (param_name_str_[i].length == 2)
