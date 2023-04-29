@@ -70,33 +70,33 @@ function plotDistribution(dist) {
 	
 	// Создаем div для графика
 	let div = document.createElement('div');
-	div.setAttribute("id", keys[key]);
+	div.setAttribute("id", param_name);
 	//div.classList.add("table_arch");
 	document.getElementById('div_dist_grath').appendChild(div);
 	
 	// Подпись параметра
-	const Chart_title = Chart_title_arr[key];
+	const Chart_title = Chart_title_arr[i];
 	
 	// Категории оси x
 	var xAxis_categories = [];
-	for (let i=0; i<10; i++) {
-	  let str = (param_scale[key]*i).toString() + "-" + (param_scale[key]*(i+1)).toString();
+	for (let j=0; j<10; j++) {
+	  let str = (param_scale[i]*j).toString() + "-" + (param_scale[i]*(j+1)).toString();
 	  xAxis_categories.push(str);
 	}
-	let str = ">" + (param_scale[key]*10).toString();
+	let str = ">" + (param_scale[i]*10).toString();
 	xAxis_categories.push(str);
 	//xAxis.setCategories(newCategories);
 	
 	// Создаем графики распределения ошибок по дням прогноза
-	const xAxis_title = yAxis_title_arr[key];
-	create_chart_error_distr(keys[key], Chart_title, xAxis_title, xAxis_categories);
+	const xAxis_title = yAxis_title_arr[i];
+	create_chart_error_distr(keys[i], Chart_title, xAxis_title, xAxis_categories);
 	
 	for (let j=0; j<7; j++) {
 	  let series_name = (j+1).toString();
-	  chartEr_distr[key].addSeries({
+	  chartEr_distr[i].addSeries({
         name: series_name
       });
-	  let series = chartEr_distr[key].series[j];
+	  let series = chartEr_distr[i].series[j];
 	  series.setVisible(j==0);
 	  series.name = (j+1).toString(); // Пример: distribution/temp/min-6
 	}
@@ -105,7 +105,7 @@ function plotDistribution(dist) {
 	for (let j=0; j<7; j++) {
 	  let myString = param[j];
       let myArray = myString.split(" ").map(Number);
-	  chartEr_distr[key].series[j].setData(myArray);
+	  chartEr_distr[i].series[j].setData(myArray);
 	}	
   }
 }
