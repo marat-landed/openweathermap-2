@@ -57,6 +57,7 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
       forecast[keys[key]].push(val);	  
 	})
   }
+  console.log(place_name, today_utc, forecast);
   plotChart(place_name, today_utc, forecast);
 }
 
