@@ -24,6 +24,21 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
 ​  */
   // Запоминаем
   all_last_forecasts_ = all_last_forecasts;
+  // Создаем Radiogroup с названиями места
+  let output="";
+  let dataList;
+	
+  for(let i=0; i < openweathermap_place.length; i++) {
+	let place_value = openweathermap_place[i][2];
+	let place_name = openweathermap_place[i][3];
+	output+= '<input type="radio" name="place" value="' + place_value + '">';
+	output+= '<br>';
+	output+= '<label for="' + place_value + '">' + place_name + '</label><br>';
+	//<input type="radio" id="" name="place" value="openweathermap_place[i][2]">
+    //<label for="html">openweathermap_place[i][3]</label><br>
+	
+  }
+  document.getElementById("place-groupbox").innerHTML = output;
   // Вызываем первое место
   data_update (0);
   
