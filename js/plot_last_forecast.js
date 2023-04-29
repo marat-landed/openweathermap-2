@@ -23,10 +23,13 @@ function plot_last_forecast(archive, openweathermap_place) {
 
   let last_forecast = {};
   
-  console.log("archive:",archive);
+  //console.log("archive:",archive);
   
   //var keys = Object.keys(archive['McMurdo']);
-  var keys = Object.keys(archive[5]);
+  const archive_1 = {};
+  archive_1 = archive[5];
+  console.log("archive_1:",archive_1);
+  var keys = Object.keys(archive_1);
   for (var key = 0; key < keys.length; key++){
 	var param = archive['McMurdo'][keys[key]];
 	//console.log(param);
