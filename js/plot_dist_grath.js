@@ -75,7 +75,7 @@ function plotDistribution(dist) {
 	document.getElementById('div_dist_grath').appendChild(div);
 	
 	// Подпись параметра
-	const Chart_title = Chart_title_arr[i];
+	const Chart_title = Chart_title_arr_[i];
 	
 	// Категории оси x
 	var xAxis_categories = [];
