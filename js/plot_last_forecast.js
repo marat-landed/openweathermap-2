@@ -31,7 +31,7 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
   for(let i=0; i < openweathermap_place.length; i++) {
 	let place_value = i;
 	let place_name = openweathermap_place[i][3];
-	output+= '<input type="radio" id="place_radioButton_' + i + ' name="place" value="' + place_value + '" onclick="data_update(value);">';
+	output+= '<input type="radio" id="place_radioButton_' + i + '" name="place" value="' + place_value + '" onclick="data_update(value);">';
 	output+= '<label for="' + place_value + '">' + place_name + '</label>';
 	if (i%2 != 0) output+= '<br>';
   }
