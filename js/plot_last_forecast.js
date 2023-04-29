@@ -31,6 +31,7 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
   table.classList.add("table_place");
   table.appendChild(tbody);
   document.getElementById('place-table').appendChild(table);
+  let row;
 	
   for(let i=0; i < openweathermap_place.length; i++) {
 	let place_value = i;
@@ -39,16 +40,12 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
 	output+= '<label for="' + place_value + '">' + place_name + '</label>';
 	
 	if (i%2 == 0) {
-	  let row = document.createElement('tr');
+	  row = document.createElement('tr');
 	  tbody.appendChild(row);
-	  let td = document.createElement('td');
-	  td.innerHTML = output;
-	  row.appendChild(td);
-	} else {
-	  let td = document.createElement('td');
-	  td.innerHTML = output;
-	  row.appendChild(td);
 	}
+	let td = document.createElement('td');
+	td.innerHTML = output;
+	row.appendChild(td);
   }
   // Вызываем первое место
   //data_update(0);
