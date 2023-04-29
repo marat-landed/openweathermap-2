@@ -47,12 +47,12 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
 	//console.log(param);
 	// param - строка прогноза вида: 1676538000 -4 -3 2 2 0 2 2 4
 	const myArray = param.split(" "); // [ "1678093200", "-1.09", "-0.75", "0.41", "6.27", "0.35", "-0.61", "3.14", "1.09" ]
-	//console.log("myArray:", myArray);
+	console.log("myArray:", myArray);
 	forecast[keys[key]]=[];
 	myArray.forEach((element, index) => {
 	  // один раз берем время из строки первого параметра: "1682726400 -32.32 -32.89 -31.28 -20.6 -23.37 -23.64 -27.53 -34.13"
 	  if ((key == 1) && (index == 0)) {
-		today_utc = element[0];
+		today_utc = Number(element);
       }
 	  // Далее время опускаем
 	  if (index == 0) return; //continue;
