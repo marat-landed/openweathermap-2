@@ -71,8 +71,8 @@ function data_dist_update (place_index) {
 	let param_name = param_name_str_[i][0];
 	if (param_name_str_[i].length == 2)
 	  param_name += "/" + param_name_str_[i][1];
-    //console.log(forecasts);
-	//console.log(param_name);
+    console.log(dist);
+	console.log(param_name);
 	let param = dist[param_name];
 	
     // Создаем подпись параметра
