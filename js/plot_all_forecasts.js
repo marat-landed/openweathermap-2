@@ -4,16 +4,47 @@
 
 import {Chart_title_arr} from "./myconst.js";
 
-export function plot_all_forecasts(jsonValue) {
+var all_forecasts_;
+
+export function plot_all_forecasts(all_forecasts, openweathermap_place) {
 // "forecast/clouds": Array(8) [ "1678352400 64.00 100.00 100.00 100.00 9.00 79.00 100.00 99.00",
 // "1678352400 68.00 100.00 100.00 100.00 7.00 75.00 18.00 95.00", "1678352400 67.00 100.00 100.00 100.00 7.00 75.00 18.00 95.00", … ]
 // "forecast/wind_speed": Array(8) [ "1678352400 6.85 7.24 8.12 7.38 4.09 5.14 4.51 2.59",
 // "1678352400 6.46 6.44 8.14 8.43 6.37 6.93 4.95 2.99", "1678352400 6.46 6.44 8.14 8.43 6.37 6.93 4.95 2.99", … ]
 //console.log(jsonValue);
+
+  // Запоминаем
+  all_forecasts_ = all_forecasts;
   
-  var keys = Object.keys(jsonValue);
+  // Создаем Radiogroup с названиями места
+  // Таблица для размещения названий мест
+  let table = document.createElement('table');
+  let tbody = document.createElement('tbody');
+  table.classList.add("table_place");
+  table.appendChild(tbody);
+  document.getElementById('place-table-arch').appendChild(table);
+  let row;
+	
+  for(let i=0; i < openweathermap_place.length; i++) {
+	let place_value = i;
+	let place_name = openweathermap_place[i][3];
+	let output = '<input type="radio" id="place_arch_radioButton_' + i + '" name="place" value="' + place_value + '" onclick="data_arch_update(value);">';
+	output+= ' &nbsp; <label for="' + place_value + '">' + place_name + '</label> &nbsp;';
+	
+	if (i%2 == 0) {
+	  row = document.createElement('tr');
+	  tbody.appendChild(row);
+	}
+	let td = document.createElement('td');
+	td.innerHTML = output;
+	row.appendChild(td);
+  }
+  
+  return;
+  
+  var keys = Object.keys(all_last_forecasts);
   for (var key = 0; key < keys.length; key++){
-	var param = jsonValue[keys[key]];
+	var param = all_last_forecasts[keys[key]];
 	//console.log("key:",keys[key]);
 	//console.log("param",param);
 	

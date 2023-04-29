@@ -28,18 +28,22 @@ import { database_URL, openweathermap_place } from "./js/myconst.js";
 	  const path_name = ["temp/min", "temp/max", "pressure", "humidity", "wind_speed",
 	    "wind_deg", "clouds", "pop", "rain", "snow", "weather/icon"];
 	  const all_last_forecasts = [];
-	  const all_forecasts = {};
+	  const all_forecasts = [];
 	  const all_dist = new Object();
 	  
 	  async function get_last_forecasts() {
 		for (let i=0; i<openweathermap_place.length; i++) {
 		  let path0 = openweathermap_place[i][2];
+		  
 		  all_forecasts[path0] = {};
 		  
 		  let last_forecasts = {};
-		  all_last_forecasts.push(last_forecasts);
 		  last_forecasts.place_name = openweathermap_place[i][3];
-		  //all_last_forecasts[path0] = {};
+		  all_last_forecasts.push(last_forecasts);
+		  
+		  let forecasts = {};
+		  forecasts.place_name = openweathermap_place[i][3];
+		  all_forecasts.push(last_forecasts);
 		  
 		  for (let part_name_no=0; part_name_no < path_name.length; part_name_no++) {
 			let param_name = path_name[part_name_no];
@@ -48,8 +52,7 @@ import { database_URL, openweathermap_place } from "./js/myconst.js";
 		      //console.log(path, value[value.length-1]);
 			  // Здесь вызывать функцию построения графика параметра
 			  //console.log(path0);
-			  all_forecasts[path0][param_name] = value; // value.length-1
-			  //all_last_forecasts[path0][param_name] = value[0]; // value.length-1
+			  forecasts[param_name] = value; // value.length-1
 			  last_forecasts[param_name] = value[0]; // value.length-1
 			  //console.log(path, all_last_forecasts);
 		    })
@@ -62,7 +65,7 @@ import { database_URL, openweathermap_place } from "./js/myconst.js";
 		  //console.log(all_last_forecasts);
 		  //console.log("Передаем для построения графиков");
 		  plot_last_forecast(all_last_forecasts, openweathermap_place); // Выводим последний прогноз
-		  //plot_all_forecasts(all_forecasts, openweathermap_place); // Строим таблицы всех прогнозов
+		  plot_all_forecasts(all_forecasts, openweathermap_place); // Строим таблицы всех прогнозов
 		})
 	  }
 	  
