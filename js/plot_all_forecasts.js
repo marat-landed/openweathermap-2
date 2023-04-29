@@ -46,20 +46,20 @@ function plot_all_forecasts(all_forecasts, Chart_title_arr, openweathermap_place
 
 function data_arch_update (place_index) {
   // console.log(all_forecasts_);
-  const forecasts = all_forecasts_[place_index];
+  let forecasts = all_forecasts_[place_index];
   // console.log(forecasts);
   // Очищаем место для таблиц
   document.getElementById('div_table_archive').innerHTML = '';
-  var keys = Object.keys(forecasts);
+  let keys = Object.keys(forecasts);
   for (let i = 0; i < param_name_str_.length; i++){
 	let param_name = param_name_str_[i][0];
 	if (param_name_str_[i].length == 2)
 	  param_name += "/" + param_name_str_[i][1];
     //console.log(forecasts);
 	//console.log(param_name);
-	var param = forecasts[param_name];
+	let param = forecasts[param_name];
 	// Создаем подпись параметра
-	var parag = document.createElement('p');
+	let parag = document.createElement('p');
 	parag.style.cssText += 'font-size: 14px; padding: 10px; font-weight: bold;';
 	parag.innerText = Chart_title_arr_[i];
 	document.getElementById('div_table_archive').appendChild(parag);
