@@ -6,7 +6,7 @@
 
 var all_forecasts_, Chart_title_arr_;
 
-function plot_all_forecasts(all_forecasts, Chart_title_arr, openweathermap_place) {
+function plot_all_forecasts(all_forecasts, Chart_title_arr, openweathermap_place, param_name_str) {
 // "forecast/clouds": Array(8) [ "1678352400 64.00 100.00 100.00 100.00 9.00 79.00 100.00 99.00",
 // "1678352400 68.00 100.00 100.00 100.00 7.00 75.00 18.00 95.00", "1678352400 67.00 100.00 100.00 100.00 7.00 75.00 18.00 95.00", … ]
 // "forecast/wind_speed": Array(8) [ "1678352400 6.85 7.24 8.12 7.38 4.09 5.14 4.51 2.59",
@@ -16,6 +16,7 @@ function plot_all_forecasts(all_forecasts, Chart_title_arr, openweathermap_place
   // Запоминаем
   all_forecasts_ = all_forecasts;
   Chart_title_arr_ = Chart_title_arr;
+  param_name_str_ = param_name_str;
   
   // Создаем Radiogroup с названиями места
   // Таблица для размещения названий мест
@@ -50,8 +51,11 @@ function data_arch_update (place_index) {
   // Очищаем место для таблиц
   document.getElementById('div_table_archive').innerHTML = '';
   var keys = Object.keys(forecasts);
-  for (let i = 0; i < Chart_title_arr_.length; i++){
-	var param = forecasts[Chart_title_arr_[i]];
+  for (let i = 0; i < param_name_str_.length; i++){
+	let param_name = param_name_str_[i][0];
+	if (param_name_str_[i].length == 1)
+	  param_name += "/" + param_name_str_[i][1];
+	var param = forecasts[param_name];
 	// Создаем подпись параметра
 	var parag = document.createElement('p');
 	parag.style.cssText += 'font-size: 14px; padding: 10px; font-weight: bold;';
