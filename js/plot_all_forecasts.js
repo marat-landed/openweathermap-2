@@ -28,7 +28,7 @@ export function plot_all_forecasts(all_forecasts, openweathermap_place) {
   for(let i=0; i < openweathermap_place.length; i++) {
 	let place_value = i;
 	let place_name = openweathermap_place[i][3];
-	let output = '<input type="radio" id="place_arch_radioButton_' + i + '" name="place" value="' + place_value + '" onclick="data_arch_update(value);">';
+	let output = '<input type="radio" id="place_arch_radioButton_' + i + '" name="place_arch" value="' + place_value + '" onclick="data_arch_update(value);">';
 	output+= ' &nbsp; <label for="' + place_value + '">' + place_name + '</label> &nbsp;';
 	
 	if (i%2 == 0) {
