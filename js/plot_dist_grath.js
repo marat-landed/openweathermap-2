@@ -9,7 +9,7 @@ function plot_dist_grath(all_dist, openweathermap_place, Chart_title_arr) {
   // Запоминаем
   all_dist_ = all_dist;
   Chart_title_arr_ = Chart_title_arr;
-  param_name_str_ = param_name_str;
+  //param_name_str_ = param_name_str;
   // Создаем Radiogroup с названиями места
   // Таблица для размещения названий мест
   let table = document.createElement('table');
