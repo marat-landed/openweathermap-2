@@ -1,7 +1,7 @@
 // index.js 23-04-2023
 
 import { plot_dist_grath } from "./js/plot_dist_grath.js";
-import { plot_dist_tab } from "./js/plot_dist_tab.js";
+//import { plot_dist_tab } from "./js/plot_dist_tab.js";
 import { plot_err_grath } from "./js/plot_err_grath.js";
 //import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
 import { database_URL, openweathermap_place, Chart_title_arr, param_name_str } from "./js/myconst.js";
@@ -29,13 +29,11 @@ import { database_URL, openweathermap_place, Chart_title_arr, param_name_str } f
 	    "wind_deg", "clouds", "pop", "rain", "snow", "weather/icon"];
 	  const all_last_forecasts = [];
 	  const all_forecasts = [];
-	  const all_dist = new Object();
+	  const all_dist = [];
 	  
 	  async function get_last_forecasts() {
 		for (let i=0; i<openweathermap_place.length; i++) {
 		  let path0 = openweathermap_place[i][2];
-		  
-		  //all_forecasts[path0] = {};
 		  
 		  let last_forecasts = {};
 		  last_forecasts.place_name = openweathermap_place[i][3];
@@ -75,21 +73,27 @@ import { database_URL, openweathermap_place, Chart_title_arr, param_name_str } f
 		  //console.log(all_last_forecasts);
 		  //console.log("Передаем для построения графиков");
 		  plot_dist_grath(all_dist); // Выводим графики распределений
-		  plot_dist_tab(all_dist); // Строим таблицы всех распределений ошибок
+		  plot_dist_tab(all_dist, Chart_title_arr); // Строим таблицы всех распределений ошибок
 		  plot_err_grath(all_dist); // Выводим графики средних абсолютных ошибок
 		})
 	  }
 	  
 	  async function get_dist() {
-	    for (var part_name_no=0; part_name_no < path_name.length-1; part_name_no++) {
-	      var path = "McMurdo/distrib/" + path_name[part_name_no];
-		  await get_dist_param (path).then ((value) => {
-		    //console.log(path, value[value.length-1]);
-			// Здесь вызывать функцию построения графика параметра
-			all_dist[path] = value; // value.length-1
-			//console.log(path, all_dist[path]);
-		  })
-	    }
+		for (let i=0; i<openweathermap_place.length; i++) {
+		  let path0 = openweathermap_place[i][2];
+		  let dist = {};
+		  dist.place_name = openweathermap_place[i][3];
+		  all_dist.push(dist);
+	      for (var part_name_no=0; part_name_no < path_name.length-1; part_name_no++) {
+	        var path = path0 + "/distrib/" + path_name[part_name_no];
+		    await get_dist_param (path).then ((value) => {
+		      //console.log(path, value[value.length-1]);
+			  // Здесь вызывать функцию построения графика параметра
+			  dist[path] = value; // value.length-1
+			  //console.log(path, all_dist[path]);
+		    })
+	      }
+		}
 	  }
 	  
 	  // Получение последнего распределения одного параметра по заданному пути path

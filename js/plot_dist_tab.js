@@ -1,18 +1,19 @@
 // 02-05-2022 Версия для МК NodeMCU
 // 20-07-2022 Загрузка архива прогнозов на страницу Архив
 // 15-02-2023 Усовершенствование создания таблиц
-import {Chart_title_arr} from "./myconst.js";
+//import {Chart_title_arr} from "./myconst.js";
 
-export function plot_dist_tab(jsonValue) {
+function plot_dist_tab(all_dist, Chart_title_arr) {
 // "forecast/clouds": Array(8) [ "1678352400 64.00 100.00 100.00 100.00 9.00 79.00 100.00 99.00",
 // "1678352400 68.00 100.00 100.00 100.00 7.00 75.00 18.00 95.00", "1678352400 67.00 100.00 100.00 100.00 7.00 75.00 18.00 95.00", … ]
 // "forecast/wind_speed": Array(8) [ "1678352400 6.85 7.24 8.12 7.38 4.09 5.14 4.51 2.59",
 // "1678352400 6.46 6.44 8.14 8.43 6.37 6.93 4.95 2.99", "1678352400 6.46 6.44 8.14 8.43 6.37 6.93 4.95 2.99", … ]
-  //console.log(jsonValue);
+  console.log(all_dist);
+  return;
   
-  var keys = Object.keys(jsonValue);
+  var keys = Object.keys(all_dist);
   for (var key = 0; key < keys.length; key++){
-	var param = jsonValue[keys[key]];
+	var param = all_dist[keys[key]];
 	
     // Создаем подпись параметра
 	var parag = document.createElement('p');
