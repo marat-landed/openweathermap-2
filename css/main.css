@@ -224,4 +224,5 @@ table.table_place {
 
 table.table_place td {
   text-align: left;
+  border: 0px solid;
 }
