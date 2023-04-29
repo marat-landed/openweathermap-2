@@ -39,10 +39,6 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
 	  place_name = last_forecasts[keys[key]];
 	  continue;
 	}
-	if (key == 1) {
-	  today_utc = last_forecasts[keys[key]];
-	  continue;
-	}
 	var param = last_forecasts[keys[key]];
 	//console.log(param);
 	// param - строка прогноза вида: 1676538000 -4 -3 2 2 0 2 2 4
