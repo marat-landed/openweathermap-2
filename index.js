@@ -4,7 +4,7 @@
 //import { plot_dist_tab } from "./js/plot_dist_tab.js";
 import { plot_err_grath } from "./js/plot_err_grath.js";
 //import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
-import { database_URL, openweathermap_place, Chart_title_arr, param_name_str } from "./js/myconst.js";
+import { database_URL, openweathermap_place, Chart_title_arr, param_name_str, param_scale } from "./js/myconst.js";
 	
 	    const firebaseConfig = {
 	      //apiKey: "AIzaSyDZCBYYnoI8O9rWW_V9PhksdRppDWfSG4o", 
@@ -72,7 +72,7 @@ import { database_URL, openweathermap_place, Chart_title_arr, param_name_str } f
 	    await get_dist().then (() => {
 		  //console.log(all_last_forecasts);
 		  //console.log("Передаем для построения графиков");
-		  plot_dist_grath(all_dist, openweathermap_place, Chart_title_arr, param_name_str); // Выводим графики распределений
+		  plot_dist_grath(all_dist, openweathermap_place, Chart_title_arr, param_name_str, param_scale); // Выводим графики распределений
 		  plot_dist_tab(all_dist, Chart_title_arr, openweathermap_place, param_name_str); // Строим таблицы всех распределений ошибок
 		  //plot_err_grath(all_dist); // Выводим графики средних абсолютных ошибок
 		})

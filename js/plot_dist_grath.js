@@ -2,14 +2,16 @@
 // 20-07-2022 Загрузка архива прогнозов на страницу Архив
 // 04-04-2023 Построение графиков распределения ошибок прогнозов
 
-var all_dist_, Chart_title_arr_, param_name_str_;
+var all_dist_, Chart_title_arr_, param_name_str_, param_scale_;
 var chartEr_distr = []; // 'chart-distribution-errors'
 
-function plot_dist_grath(all_dist, openweathermap_place, Chart_title_arr, param_name_str) {
+function plot_dist_grath(all_dist, openweathermap_place, Chart_title_arr, param_name_str, param_scale) {
   // Запоминаем
   all_dist_ = all_dist;
   Chart_title_arr_ = Chart_title_arr;
   param_name_str_ = param_name_str;
+  param_scale_ = param_scale;
+  
   // Создаем Radiogroup с названиями места
   // Таблица для размещения названий мест
   let table = document.createElement('table');
@@ -80,10 +82,10 @@ function plotDistribution(dist) {
 	// Категории оси x
 	var xAxis_categories = [];
 	for (let j=0; j<10; j++) {
-	  let str = (param_scale[i]*j).toString() + "-" + (param_scale[i]*(j+1)).toString();
+	  let str = (param_scale_[i]*j).toString() + "-" + (param_scale_[i]*(j+1)).toString();
 	  xAxis_categories.push(str);
 	}
-	let str = ">" + (param_scale[i]*10).toString();
+	let str = ">" + (param_scale_[i]*10).toString();
 	xAxis_categories.push(str);
 	//xAxis.setCategories(newCategories);
 	
