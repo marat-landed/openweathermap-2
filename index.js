@@ -35,7 +35,7 @@ import { database_URL, openweathermap_place, Chart_title_arr } from "./js/mycons
 		for (let i=0; i<openweathermap_place.length; i++) {
 		  let path0 = openweathermap_place[i][2];
 		  
-		  all_forecasts[path0] = {};
+		  //all_forecasts[path0] = {};
 		  
 		  let last_forecasts = {};
 		  last_forecasts.place_name = openweathermap_place[i][3];
