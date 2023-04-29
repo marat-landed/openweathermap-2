@@ -218,7 +218,7 @@ p.p_home {
 
 table.table_place {
   font-size: 12px;
-  border: 0;
+  border: 0px solid;
   border-collapse: collapse; /* Убираем двойные линии между ячейками */
 }
 
