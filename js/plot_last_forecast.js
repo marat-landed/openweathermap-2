@@ -52,7 +52,7 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
   
   Highcharts.setOptions({
 	lang: {
-		weekdays: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
+		weekdays: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб']
     }
   });
   
