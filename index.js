@@ -72,9 +72,9 @@ import { database_URL, openweathermap_place, Chart_title_arr, param_name_str } f
 	    await get_dist().then (() => {
 		  //console.log(all_last_forecasts);
 		  //console.log("Передаем для построения графиков");
-		  plot_dist_grath(all_dist); // Выводим графики распределений
+		  //plot_dist_grath(all_dist); // Выводим графики распределений
 		  plot_dist_tab(all_dist, Chart_title_arr); // Строим таблицы всех распределений ошибок
-		  plot_err_grath(all_dist); // Выводим графики средних абсолютных ошибок
+		  //plot_err_grath(all_dist); // Выводим графики средних абсолютных ошибок
 		})
 	  }
 	  
