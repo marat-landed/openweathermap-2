@@ -5,12 +5,12 @@ var chartT, // 'chart-temperature'
 	chartHPP, // 'div-chart-humid-pop-precip'
 	chartPW; // 'div-chart-wind-press'
 	
-function plot_last_forecast(archive, openweathermap_place) {
+function plot_last_forecast(all_last_forecasts, openweathermap_place) {
   // Из архива всех прогнозов необходимо сформировать запись вида:
   // {"today_utc": 1676538000,"temp_max":[23,23,23,23,23,23,23,23],"temp_min":[12,12,12,23,23,23,23,23],
   //  "pressure"...,"clouds"...,"precipitation"...,"wind_speed"...,"wind_direct"...,"weather_icon_num"...}
-  //console.log(archive);
-  /* Получаем объект вида (объекты (н.п.) в объекте archive):
+  //console.log(all_last_forecasts);
+  /* Получаем объект вида (объекты (н.п.) в объекте all_last_forecasts):
   Object { Pisochyn: {…}, Anchorage: {…}, Ushuaia: {…}, Addis_Ababa: {…}, Oymyakon: {…}, McMurdo: {…} }
   ...
     Pisochyn: Object { "temp/min":
@@ -23,15 +23,15 @@ function plot_last_forecast(archive, openweathermap_place) {
 
   let last_forecast = {};
   
-  //console.log("archive:",archive);
+  //console.log("all_last_forecasts:",all_last_forecasts);
   
   //var keys = Object.keys(archive['McMurdo']);
-  const archive_1 = {};
-  archive_1 = archive[5];
-  console.log("archive_1:",archive_1);
-  var keys = Object.keys(archive_1);
+  const last_forecasts = all_last_forecasts[5];
+  
+  console.log("last_forecasts:",last_forecasts);
+  var keys = Object.keys(last_forecasts);
   for (var key = 0; key < keys.length; key++){
-	var param = archive['McMurdo'][keys[key]];
+	var param = last_forecasts[keys[key]];
 	//console.log(param);
 	// param - строка прогноза вида: 1676538000 -4 -3 2 2 0 2 2 4
 	const myArray = param.split(" "); // [ "1678093200", "-1.09", "-0.75", "0.41", "6.27", "0.35", "-0.61", "3.14", "1.09" ]
