@@ -5,11 +5,11 @@
 var all_dist_, Chart_title_arr_, param_name_str_;
 var chartEr_distr = []; // 'chart-distribution-errors'
 
-function plot_dist_grath(all_dist, openweathermap_place, Chart_title_arr) {
+function plot_dist_grath(all_dist, openweathermap_place, Chart_title_arr, param_name_str) {
   // Запоминаем
   all_dist_ = all_dist;
   Chart_title_arr_ = Chart_title_arr;
-  //param_name_str_ = param_name_str;
+  param_name_str_ = param_name_str;
   // Создаем Radiogroup с названиями места
   // Таблица для размещения названий мест
   let table = document.createElement('table');
@@ -48,10 +48,9 @@ function plotDistribution(dist) {
   // Каждое значение - строка вида "6 1 0 2 0 0 0 0 0 0 0".
   // Каждое элемент в строке - количество ошибок, находящихся в соответствующем интервале.
   console.log(dist);
-  return;
   
   // Сколько дней ведется наблюдение
-  let param1 = dist[keys[0]];
+  let param1 = dist.pop;
   let str1 = param1[0];
   let arr = str1.split(" ").map(Number);
   let sum = 0;
@@ -61,8 +60,13 @@ function plotDistribution(dist) {
   document.getElementById("stat_day").textContent = sum;
   document.getElementById("stat_day_err").textContent = sum;
   
-  for (var key = 0; key < keys.length; key++){
-	var param = dist[keys[key]];
+  for (let i = 0; i < param_name_str_.length-1; i++){
+	let param_name = param_name_str_[i][0];
+	if (param_name_str_[i].length == 2)
+	  param_name += "/" + param_name_str_[i][1];
+    //console.log(dist);
+	//console.log(param_name);
+	let param = dist[param_name];
 	
 	// Создаем div для графика
 	let div = document.createElement('div');
