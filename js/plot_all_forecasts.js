@@ -55,6 +55,8 @@ function data_arch_update (place_index) {
 	let param_name = param_name_str_[i][0];
 	if (param_name_str_[i].length == 1)
 	  param_name += "/" + param_name_str_[i][1];
+    console.log(forecasts);
+	console.log(param_name);
 	var param = forecasts[param_name];
 	// Создаем подпись параметра
 	var parag = document.createElement('p');
