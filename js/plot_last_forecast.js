@@ -57,16 +57,18 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
       forecast[keys[key]].push(val);	  
 	})
   }
-  console.log(place_name, today_utc, forecast);
+  //console.log(place_name, today_utc, forecast);
   plotChart(place_name, today_utc, forecast);
 }
 
 //Plot temperature in the temperature chart
 function plotChart(place_name, today_utc, forecast) {
+  console.log(place_name, today_utc, forecast);
+  console.log(forecast);
   var keys = Object.keys(forecast);
   
   // Преобразуем ко времени 00 часов
-  var pointStart_curr = parseInt(today_utc/86400)*86400000;
+  //var pointStart_curr = parseInt(today_utc/86400)*86400000;
   //console.log("pointStart_curr:",pointStart_curr); // 1649808000000
   var date = new Date(today_utc*1000);
   var day = date.getDate();
