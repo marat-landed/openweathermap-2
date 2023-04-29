@@ -47,13 +47,11 @@ function data_arch_update (place_index) {
   // console.log(all_forecasts_);
   const forecasts = all_forecasts_[place_index];
   // console.log(forecasts);
+  // Очищаем место для таблиц
+  document.getElementById('div_table_archive').innerHTML = '';
   var keys = Object.keys(forecasts);
   for (var key = 1; key < keys.length; key++){
 	var param = forecasts[keys[key]];
-	console.log(param);
-	//console.log("key:",keys[key]);
-	//console.log("param",param);
-	
 	// Создаем подпись параметра
 	var parag = document.createElement('p');
 	parag.style.cssText += 'font-size: 14px; padding: 10px; font-weight: bold;';
