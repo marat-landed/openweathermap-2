@@ -44,7 +44,7 @@ function plot_dist_grath(all_dist, openweathermap_place, Chart_title_arr, param_
 	  param_name += "/" + param_name_str_[i][1];
     //console.log(dist);
 	//console.log(param_name);
-	let param = dist[param_name];
+	//let param = dist[param_name];
 	
 	// Создаем div для графика
 	let div = document.createElement('div');
