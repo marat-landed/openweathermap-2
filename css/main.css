@@ -216,6 +216,12 @@ p.p_home {
   }
 }
 
-.table_place {
+table.table_place {
+  font-size: 12px;
+  border: 0;
+  border-collapse: collapse; /* Убираем двойные линии между ячейками */
+}
+
+table.table_place td {
   text-align: left;
 }
