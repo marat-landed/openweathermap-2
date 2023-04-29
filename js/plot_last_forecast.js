@@ -409,6 +409,11 @@ function create_chart_weather_clouds(renderTo) {
 	xAxis: {
 	  type: 'datetime',
 	  dateTimeLabelFormats: { day: '%d.%m' },
+	  "labels": {
+        "formatter": function() {
+          return Highcharts.dateFormat("%d.%m %a", this.value)
+        }                    
+      },
 	  gridLineWidth: 1,
 	},
 	yAxis: [
@@ -462,6 +467,11 @@ function create_chart_humid_pop_precip(renderTo) {
 	xAxis: {
 	  type: 'datetime',
 	  dateTimeLabelFormats: { day: '%d.%m' },
+	  "labels": {
+        "formatter": function() {
+          return Highcharts.dateFormat("%d.%m %a", this.value)
+        }                    
+      },
 	  gridLineWidth: 1,
 	},
 	yAxis: [
@@ -683,6 +693,11 @@ function create_chart_press_wind(renderTo) {
 	xAxis: {
 	  type: 'datetime',
 	  dateTimeLabelFormats: { day: '%d.%m' },
+	  "labels": {
+        "formatter": function() {
+          return Highcharts.dateFormat("%d.%m %a", this.value)
+        }                    
+      },
 	  gridLineWidth: 1,
 	},
 	yAxis: [
