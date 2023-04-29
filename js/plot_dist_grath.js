@@ -17,8 +17,8 @@ function plot_dist_grath(all_dist, openweathermap_place) {
   table.classList.add("table_place");
   table.appendChild(tbody);
   document.getElementById('place-graph-dist').appendChild(table);
+  
   let row;
-	
   for(let i=0; i < openweathermap_place.length; i++) {
 	let place_value = i;
 	let place_name = openweathermap_place[i][3];
