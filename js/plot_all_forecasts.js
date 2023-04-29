@@ -78,7 +78,7 @@ function data_arch_update (place_index) {
 	  const myArray = element.split(" ");
 	  //console.log(myArray);
 	  let row = document.createElement('tr');
-	  tbody.appendChild(row);
+	  tbody.appendChild_(row);
 	  let td = document.createElement('td');
 	  td.innerHTML = index;
 	  row.appendChild(td);
