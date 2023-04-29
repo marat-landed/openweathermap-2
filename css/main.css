@@ -216,6 +216,6 @@ p.p_home {
   }
 }
 
-div.place {
-  font-size: 12px;	
+.table_place {
+  text-align: left;
 }
