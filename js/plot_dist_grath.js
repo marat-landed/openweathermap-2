@@ -92,7 +92,7 @@ function plotDistribution(dist) {
 	
 	// Создаем графики распределения ошибок по дням прогноза
 	const xAxis_title = yAxis_title_arr_[i];
-	create_chart_error_distr(keys[i], Chart_title, xAxis_title, xAxis_categories);
+	create_chart_error_distr(param_name, Chart_title, xAxis_title, xAxis_categories);
 	
 	for (let j=0; j<7; j++) {
 	  let series_name = (j+1).toString();
