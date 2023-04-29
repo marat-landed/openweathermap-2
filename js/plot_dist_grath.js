@@ -5,12 +5,13 @@
 var all_dist_, Chart_title_arr_, param_name_str_, param_scale_;
 var chartEr_distr = []; // 'chart-distribution-errors'
 
-function plot_dist_grath(all_dist, openweathermap_place, Chart_title_arr, param_name_str, param_scale) {
+function plot_dist_grath(all_dist, openweathermap_place, Chart_title_arr, param_name_str, param_scale, yAxis_title_arr) {
   // Запоминаем
   all_dist_ = all_dist;
   Chart_title_arr_ = Chart_title_arr;
   param_name_str_ = param_name_str;
   param_scale_ = param_scale;
+  yAxis_title_arr_ = yAxis_title_arr;
   
   // Создаем Radiogroup с названиями места
   // Таблица для размещения названий мест
@@ -90,7 +91,7 @@ function plotDistribution(dist) {
 	//xAxis.setCategories(newCategories);
 	
 	// Создаем графики распределения ошибок по дням прогноза
-	const xAxis_title = yAxis_title_arr[i];
+	const xAxis_title = yAxis_title_arr_[i];
 	create_chart_error_distr(keys[i], Chart_title, xAxis_title, xAxis_categories);
 	
 	for (let j=0; j<7; j++) {
