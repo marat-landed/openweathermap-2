@@ -31,9 +31,9 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
   for(let i=0; i < openweathermap_place.length; i++) {
 	let place_value = openweathermap_place[i][2];
 	let place_name = openweathermap_place[i][3];
-	output+= '<input type="radio" class="place" name="place" value="' + place_value + '">';
+	output+= '<input type="radio" name="place" value="' + place_value + '">';
 	output+= '<label for="' + place_value + '">' + place_name + '</label><br>';
-	if (i%2 == 0) output+= '<br>';
+	if (i%2 != 0) output+= '<br>';
   }
   document.getElementById("place-groupbox").innerHTML = output;
   // Вызываем первое место
