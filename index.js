@@ -86,10 +86,11 @@ import { database_URL, openweathermap_place, Chart_title_arr, param_name_str } f
 		  all_dist.push(dist);
 	      for (var part_name_no=0; part_name_no < path_name.length-1; part_name_no++) {
 	        var path = path0 + "/distrib/" + path_name[part_name_no];
+			let param_name = path_name[part_name_no];
 		    await get_dist_param (path).then ((value) => {
 		      //console.log(path, value[value.length-1]);
 			  // Здесь вызывать функцию построения графика параметра
-			  dist[path] = value; // value.length-1
+			  dist[param_name] = value; // value.length-1
 			  //console.log(path, all_dist[path]);
 		    })
 	      }
