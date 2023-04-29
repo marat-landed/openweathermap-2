@@ -30,7 +30,7 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
   
   console.log("last_forecasts:",last_forecasts);
   var keys = Object.keys(last_forecasts);
-  let place_name, today_utc, forecast[];
+  let place_name, today_utc, forecast = [];
   for (var key = 0; key < keys.length; key++){
 	// 1-й элемент - имя места: Песочин,...
 	// 2-й элемент - дата
