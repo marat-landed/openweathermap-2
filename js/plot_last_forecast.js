@@ -5,7 +5,7 @@ var chartT, // 'chart-temperature'
 	chartHPP, // 'div-chart-humid-pop-precip'
 	chartPW; // 'div-chart-wind-press'
 	
-var all_last_forecasts_, openweathermap_place_;
+var all_last_forecasts_;
 	
 function plot_last_forecast(all_last_forecasts, openweathermap_place) {
   // Из архива всех прогнозов необходимо сформировать запись вида:
@@ -24,7 +24,6 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
 ​  */
   // Запоминаем
   all_last_forecasts_ = all_last_forecasts;
-  openweathermap_place_ = openweathermap_place;
   // Вызываем первое место
   data_update (0);
   
@@ -36,7 +35,7 @@ function data_update (place_index) {
   //console.log("all_last_forecasts:",all_last_forecasts);
   
   //var keys = Object.keys(archive['McMurdo']);
-  const last_forecasts = all_last_forecasts[place_index];
+  const last_forecasts = all_last_forecasts_[place_index];
   
   //console.log("last_forecasts:",last_forecasts);
   var keys = Object.keys(last_forecasts);
