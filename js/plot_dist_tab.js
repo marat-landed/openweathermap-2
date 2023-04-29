@@ -78,7 +78,7 @@ function data_dist_update (place_index) {
     // Создаем подпись параметра
 	var parag = document.createElement('p');
 	parag.style.cssText += 'font-size: 14px; padding: 10px; font-weight: bold;';
-	parag.innerText = Chart_title_arr[i];
+	parag.innerText = Chart_title_arr_[i];
 	document.getElementById('div_dist_tab').appendChild(parag);
 	
 	let table = document.createElement('table');
