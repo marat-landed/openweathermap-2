@@ -47,7 +47,7 @@ function data_arch_update (place_index) {
   const forecasts = all_forecasts_[place_index];
   console.log(forecasts);
   var keys = Object.keys(forecasts);
-  for (var key = 0; key < keys.length; key++){
+  for (var key = 1; key < keys.length; key++){
 	var param = forecasts[keys[key]];
 	console.log(param);
 	//console.log("key:",keys[key]);
