@@ -25,7 +25,8 @@ function plot_last_forecast(archive, openweathermap_place) {
   
   //console.log("archive:",archive);
   
-  var keys = Object.keys(archive['McMurdo']);
+  //var keys = Object.keys(archive['McMurdo']);
+  var keys = Object.keys(archive[5]);
   for (var key = 0; key < keys.length; key++){
 	var param = archive['McMurdo'][keys[key]];
 	//console.log(param);
@@ -42,11 +43,11 @@ function plot_last_forecast(archive, openweathermap_place) {
       if (index>0) last_forecast[keys[key]].push(val);	  
 	})
   }
-  plotChart(last_forecast, openweathermap_place);
+  plotChart(last_forecast, openweathermap_place[5][3]);
 }
 
 //Plot temperature in the temperature chart
-function plotChart(jsonValue, openweathermap_place) {
+function plotChart(jsonValue, place) {
   var keys = Object.keys(jsonValue);
   
   // Преобразуем ко времени 00 часов
@@ -57,7 +58,7 @@ function plotChart(jsonValue, openweathermap_place) {
   var month = date.getMonth()+1;
   var year = date.getFullYear();
   document.getElementById("forecast_date").textContent = day + '-' + month + '-' + year;
-  document.getElementById("place_name").textContent = openweathermap_place[5][3] ;
+  document.getElementById("place_name").textContent = place;
   
   create_chart_temp('div-chart-temperature'); // chartT: 'div-chart-temperature'
   create_chart_weather_clouds('div-chart-weather-clouds'); // chartWC: 'div-chart-weather-clouds'
