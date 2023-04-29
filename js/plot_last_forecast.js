@@ -50,6 +50,10 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
 	//console.log("myArray:", myArray);
 	forecast[keys[key]]=[];
 	myArray.forEach((element, index) => {
+	  // один раз берем время из строки первого параметра: "1682726400 -32.32 -32.89 -31.28 -20.6 -23.37 -23.64 -27.53 -34.13"
+	  if ((key == 1) && (index == 0)) today_utc = element;
+	  // Далее время опускаем
+	  if (index == 0) return; //continue;
 	  let val;
 	  if (keys[key]=="weather/icon") val = element; 
 	  else val = Number(element);
@@ -87,7 +91,7 @@ function plotChart(place_name, today_utc, forecast) {
   // 6: 'wind-speed', 7: 'wind-direct', 8: 'weather_icon_num'
   //for (var key = 1; key < 8; key++){
   for (var key = 0; key < keys.length; key++){
-	if (keys[key]=="today_utc") continue;
+	//if (keys[key]=="today_utc") continue;
 	if ((keys[key]=="wind_speed") || (keys[key]=="wind_deg")) {
 	  var param = forecast["wind_speed"]; // wind_speed
 	  var param1 = forecast["wind_deg"]; // wind_direct
