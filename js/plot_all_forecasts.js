@@ -2,11 +2,11 @@
 // 20-07-2022 Загрузка архива прогнозов на страницу Архив
 // 15-02-2023 Усовершенствование создания таблиц
 
-import {Chart_title_arr} from "./myconst.js";
+//import {Chart_title_arr} from "./myconst.js";
 
-var all_forecasts_;
+var all_forecasts_, Chart_title_arr_;
 
-export function plot_all_forecasts(all_forecasts, openweathermap_place) {
+export function plot_all_forecasts(all_forecasts, Chart_title_arr, openweathermap_place) {
 // "forecast/clouds": Array(8) [ "1678352400 64.00 100.00 100.00 100.00 9.00 79.00 100.00 99.00",
 // "1678352400 68.00 100.00 100.00 100.00 7.00 75.00 18.00 95.00", "1678352400 67.00 100.00 100.00 100.00 7.00 75.00 18.00 95.00", … ]
 // "forecast/wind_speed": Array(8) [ "1678352400 6.85 7.24 8.12 7.38 4.09 5.14 4.51 2.59",
@@ -15,6 +15,7 @@ export function plot_all_forecasts(all_forecasts, openweathermap_place) {
 
   // Запоминаем
   all_forecasts_ = all_forecasts;
+  Chart_title_arr_ = Chart_title_arr;
   
   // Создаем Radiogroup с названиями места
   // Таблица для размещения названий мест

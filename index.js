@@ -4,7 +4,7 @@ import { plot_dist_grath } from "./js/plot_dist_grath.js";
 import { plot_dist_tab } from "./js/plot_dist_tab.js";
 import { plot_err_grath } from "./js/plot_err_grath.js";
 import { plot_all_forecasts } from "./js/plot_all_forecasts.js";
-import { database_URL, openweathermap_place } from "./js/myconst.js";
+import { database_URL, openweathermap_place, Chart_title_arr } from "./js/myconst.js";
 	
 	    const firebaseConfig = {
 	      //apiKey: "AIzaSyDZCBYYnoI8O9rWW_V9PhksdRppDWfSG4o", 
@@ -65,7 +65,7 @@ import { database_URL, openweathermap_place } from "./js/myconst.js";
 		  //console.log(all_last_forecasts);
 		  //console.log("Передаем для построения графиков");
 		  plot_last_forecast(all_last_forecasts); // Выводим последний прогноз
-		  plot_all_forecasts(all_forecasts, openweathermap_place); // Строим таблицы всех прогнозов
+		  plot_all_forecasts(all_forecasts, Chart_title_arr, openweathermap_place); // Строим таблицы всех прогнозов
 		})
 	  }
 	  
