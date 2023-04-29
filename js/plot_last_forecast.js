@@ -25,17 +25,31 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
   // Запоминаем
   all_last_forecasts_ = all_last_forecasts;
   // Создаем Radiogroup с названиями места
-  let output="";
-  let dataList;
+  // Таблица для размещения названий мест
+  let table = document.createElement('table');
+  let tbody = document.createElement('tbody');
+  table.classList.add("table_place");
+  table.appendChild(tbody);
+  document.getElementById('place-table').appendChild(table);
 	
   for(let i=0; i < openweathermap_place.length; i++) {
 	let place_value = i;
 	let place_name = openweathermap_place[i][3];
-	output+= '<input type="radio" id="place_radioButton_' + i + '" name="place" value="' + place_value + '" onclick="data_update(value);">';
+	let output = '<input type="radio" id="place_radioButton_' + i + '" name="place" value="' + place_value + '" onclick="data_update(value);">';
 	output+= '<label for="' + place_value + '">' + place_name + '</label>';
-	if (i%2 != 0) output+= '<br>';
+	
+	if (i%2 == 0) {
+	  let row = document.createElement('tr');
+	  tbody.appendChild(row);
+	  let td = document.createElement('td');
+	  td.innerHTML = output;
+	  row.appendChild(td);
+	} else {
+	  let td = document.createElement('td');
+	  td.innerHTML = output;
+	  row.appendChild(td);
+	}
   }
-  document.getElementById("place-groupbox").innerHTML = output;
   // Вызываем первое место
   //data_update(0);
   document.getElementById("place_radioButton_0").click()
@@ -81,11 +95,11 @@ function data_update (place_index) {
 	})
   }
   //console.log(place_name, today_utc, forecast);
-  plotChart(place_name, today_utc, forecast);	
+  plotChart(today_utc, forecast);	
 }
 
 //Plot temperature in the temperature chart
-function plotChart(place_name, today_utc, forecast) {
+function plotChart(today_utc, forecast) {
   //console.log(place_name, today_utc, forecast);
   //console.log(forecast);
   var keys = Object.keys(forecast);
@@ -97,8 +111,8 @@ function plotChart(place_name, today_utc, forecast) {
   var day = date.getDate();
   var month = date.getMonth()+1;
   var year = date.getFullYear();
-  document.getElementById("forecast_date").textContent = day + '-' + month + '-' + year;
-  document.getElementById("place_name").textContent = place_name;
+  //document.getElementById("forecast_date").textContent = day + '-' + month + '-' + year;
+  //document.getElementById("place_name").textContent = place_name;
   
   create_chart_temp('div-chart-temperature'); // chartT: 'div-chart-temperature'
   create_chart_weather_clouds('div-chart-weather-clouds'); // chartWC: 'div-chart-weather-clouds'
