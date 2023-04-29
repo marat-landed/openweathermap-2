@@ -51,7 +51,9 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
 	forecast[keys[key]]=[];
 	myArray.forEach((element, index) => {
 	  // один раз берем время из строки первого параметра: "1682726400 -32.32 -32.89 -31.28 -20.6 -23.37 -23.64 -27.53 -34.13"
-	  if ((key == 1) && (index == 0)) today_utc = element;
+	  if ((key == 1) && (index == 0)) {
+		today_utc = element[0];
+      }
 	  // Далее время опускаем
 	  if (index == 0) return; //continue;
 	  let val;
