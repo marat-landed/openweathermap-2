@@ -323,6 +323,11 @@ function create_chart_temp(renderTo) {
 	  type: 'datetime',
 	  dateTimeLabelFormats: { day: '%d.%m' },
 	  gridLineWidth: 1,
+	  "labels": {
+        "formatter": function() {
+          return Highcharts.dateFormat("%d.%m %a", this.value)
+        }                    
+      }
 	},
 	yAxis: [
 	  {
