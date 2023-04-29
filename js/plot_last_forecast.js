@@ -29,16 +29,16 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
   let dataList;
 	
   for(let i=0; i < openweathermap_place.length; i++) {
-	let place_value = openweathermap_place[i][2];
+	let place_value = i;
 	let place_name = openweathermap_place[i][3];
-	output+= '<input type="radio" name="place" value="' + place_value + '">';
-	output+= '<label for="' + place_value + '">' + place_name + '</label><br>';
+	output+= '<input type="radio" id="place_radioButton_' + i + ' name="place" value="' + place_value + '" onclick="data_update(value);">';
+	output+= '<label for="' + place_value + '">' + place_name + '</label>';
 	if (i%2 != 0) output+= '<br>';
   }
   document.getElementById("place-groupbox").innerHTML = output;
   // Вызываем первое место
-  data_update (0);
-  
+  //data_update(0);
+  document.getElementById("place_radioButton_0").click()
 }
 
 function data_update (place_index) {
