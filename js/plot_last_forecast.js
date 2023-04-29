@@ -5,6 +5,8 @@ var chartT, // 'chart-temperature'
 	chartHPP, // 'div-chart-humid-pop-precip'
 	chartPW; // 'div-chart-wind-press'
 	
+var all_last_forecasts_, openweathermap_place_;
+	
 function plot_last_forecast(all_last_forecasts, openweathermap_place) {
   // Из архива всех прогнозов необходимо сформировать запись вида:
   // {"today_utc": 1676538000,"temp_max":[23,23,23,23,23,23,23,23],"temp_min":[12,12,12,23,23,23,23,23],
@@ -20,15 +22,23 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
 	Oymyakon: {…}, 
 	McMurdo
 ​  */
+  // Запоминаем
+  all_last_forecasts_ = all_last_forecasts;
+  openweathermap_place_ = openweathermap_place;
+  // Вызываем первое место
+  data_update (0);
+  
+}
 
+function data_update (place_index) {
   let last_forecast = {};
   
   //console.log("all_last_forecasts:",all_last_forecasts);
   
   //var keys = Object.keys(archive['McMurdo']);
-  const last_forecasts = all_last_forecasts[5];
+  const last_forecasts = all_last_forecasts[place_index];
   
-  console.log("last_forecasts:",last_forecasts);
+  //console.log("last_forecasts:",last_forecasts);
   var keys = Object.keys(last_forecasts);
   let place_name, today_utc, forecast = {};
   for (var key = 0; key < keys.length; key++){
@@ -43,7 +53,7 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
 	//console.log(param);
 	// param - строка прогноза вида: 1676538000 -4 -3 2 2 0 2 2 4
 	const myArray = param.split(" "); // [ "1678093200", "-1.09", "-0.75", "0.41", "6.27", "0.35", "-0.61", "3.14", "1.09" ]
-	console.log("myArray:", myArray);
+	//console.log("myArray:", myArray);
 	forecast[keys[key]]=[];
 	myArray.forEach((element, index) => {
 	  // один раз берем время из строки первого параметра: "1682726400 -32.32 -32.89 -31.28 -20.6 -23.37 -23.64 -27.53 -34.13"
@@ -60,13 +70,13 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
 	})
   }
   //console.log(place_name, today_utc, forecast);
-  plotChart(place_name, today_utc, forecast);
+  plotChart(place_name, today_utc, forecast);	
 }
 
 //Plot temperature in the temperature chart
 function plotChart(place_name, today_utc, forecast) {
-  console.log(place_name, today_utc, forecast);
-  console.log(forecast);
+  //console.log(place_name, today_utc, forecast);
+  //console.log(forecast);
   var keys = Object.keys(forecast);
   
   // Преобразуем ко времени 00 часов
