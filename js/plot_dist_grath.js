@@ -36,34 +36,9 @@ function plot_dist_grath(all_dist, openweathermap_place, Chart_title_arr, param_
 	td.innerHTML = output;
 	row.appendChild(td);
   }
-  document.getElementById("place_dist_graph_radioButton_0").click();
-}  
   
-function data_dist_graph_update (place_index) {
-  let dist = all_dist_[place_index];
-  plotDistribution(dist);
-}
-
-function plotDistribution(dist) {
-  // jsonValue - объект.
-  // Key: distribution/temp/min, distribution/temp/max,..., distribution/snow
-  // Каждый элемент объекта - массив из 7 значений - по дням прогноза.
-  // Каждое значение - строка вида "6 1 0 2 0 0 0 0 0 0 0".
-  // Каждое элемент в строке - количество ошибок, находящихся в соответствующем интервале.
-  console.log(dist);
-  
-  // Сколько дней ведется наблюдение
-  let param1 = dist.pop;
-  let str1 = param1[0];
-  let arr = str1.split(" ").map(Number);
-  let sum = 0;
-  for(let i = 0; i < arr.length; i++){
-    sum += arr[i];
-  }
-  document.getElementById("stat_day").textContent = sum;
-  document.getElementById("stat_day_err").textContent = sum;
-  
-  for (let i = 0; i < param_name_str_.length-1; i++){
+  // Создаем графики распределения ошибок по дням прогноза
+  for (let i = 0; i < param_name_str_.length-1; i++) {
 	let param_name = param_name_str_[i][0];
 	if (param_name_str_[i].length == 2)
 	  param_name += "/" + param_name_str_[i][1];
@@ -103,12 +78,81 @@ function plotDistribution(dist) {
 	  series.setVisible(j==0);
 	  series.name = (j+1).toString(); // Пример: distribution/temp/min-6
 	}
+  }
+  
+  document.getElementById("place_dist_graph_radioButton_0").click();
+}  
+  
+function data_dist_graph_update (place_index) {
+  let dist = all_dist_[place_index];
+  plotDistribution(dist);
+}
 
+function plotDistribution(dist) {
+  // jsonValue - объект.
+  // Key: distribution/temp/min, distribution/temp/max,..., distribution/snow
+  // Каждый элемент объекта - массив из 7 значений - по дням прогноза.
+  // Каждое значение - строка вида "6 1 0 2 0 0 0 0 0 0 0".
+  // Каждое элемент в строке - количество ошибок, находящихся в соответствующем интервале.
+  console.log(dist);
+  
+  // Сколько дней ведется наблюдение
+  let param1 = dist.pop;
+  let str1 = param1[0];
+  let arr = str1.split(" ").map(Number);
+  let sum = 0;
+  for(let i = 0; i < arr.length; i++){
+    sum += arr[i];
+  }
+  document.getElementById("stat_day").textContent = sum;
+  document.getElementById("stat_day_err").textContent = sum;
+  
+  for (let i = 0; i < param_name_str_.length-1; i++){
+	let param_name = param_name_str_[i][0];
+	if (param_name_str_[i].length == 2)
+	  param_name += "/" + param_name_str_[i][1];
+    //console.log(dist);
+	//console.log(param_name);
+	let param = dist[param_name];
+	
+	/*
+	// Создаем div для графика
+	let div = document.createElement('div');
+	div.setAttribute("id", param_name);
+	document.getElementById('div_dist_grath').appendChild(div);
+	// Подпись параметра
+	const Chart_title = Chart_title_arr_[i];
+	// Категории оси x
+	var xAxis_categories = [];
+	for (let j=0; j<10; j++) {
+	  let str = (param_scale_[i]*j).toString() + "-" + (param_scale_[i]*(j+1)).toString();
+	  xAxis_categories.push(str);
+	}
+	let str = ">" + (param_scale_[i]*10).toString();
+	xAxis_categories.push(str);
+	// Создаем графики распределения ошибок по дням прогноза
+	const xAxis_title = yAxis_title_arr_[i];
+	create_chart_error_distr(param_name, Chart_title, xAxis_title, xAxis_categories);
+	
+	for (let j=0; j<7; j++) {
+	  let series_name = (j+1).toString();
+	  chartEr_distr[i].addSeries({
+        name: series_name
+      });
+	  let series = chartEr_distr[i].series[j];
+	  series.setVisible(j==0);
+	  series.name = (j+1).toString(); // Пример: distribution/temp/min-6
+	}
+    */
 	// Создаем данные для графика
 	for (let j=0; j<7; j++) {
 	  let myString = param[j];
       let myArray = myString.split(" ").map(Number);
-	  chartEr_distr[i].series[j].setData(myArray);
+	  //chartEr_distr[i].series[j].setData(myArray);
+	  chartEr_distr[i].series[j].update({
+		//pointStart: pointStart_curr,
+		data: myArray //data.data
+	  })
 	}	
   }
 }
