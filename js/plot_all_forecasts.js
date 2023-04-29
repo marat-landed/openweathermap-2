@@ -39,12 +39,14 @@ export function plot_all_forecasts(all_forecasts, openweathermap_place) {
 	td.innerHTML = output;
 	row.appendChild(td);
   }
-  
-  return;
-  
-  var keys = Object.keys(all_last_forecasts);
+  document.getElementById("place_arch_radioButton_0").click();
+}
+
+function data_update (data_arch_update) {
+  const forecasts = all_forecasts_[place_index];
+  var keys = Object.keys(forecasts);
   for (var key = 0; key < keys.length; key++){
-	var param = all_last_forecasts[keys[key]];
+	var param = forecasts[keys[key]];
 	//console.log("key:",keys[key]);
 	//console.log("param",param);
 	
@@ -91,5 +93,5 @@ export function plot_all_forecasts(all_forecasts, openweathermap_place) {
 		}
 	  })
 	})
-  }
+  }	
 }

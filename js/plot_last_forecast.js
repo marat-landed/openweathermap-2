@@ -56,14 +56,10 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
     }
   });
   
-  document.getElementById("place_radioButton_0").click()
+  document.getElementById("place_radioButton_0").click();
 }
 
 function data_update (place_index) {
-  let last_forecast = {};
-  
-  //console.log("all_last_forecasts:",all_last_forecasts);
-  
   //var keys = Object.keys(archive['McMurdo']);
   const last_forecasts = all_last_forecasts_[place_index];
   
