@@ -51,9 +51,10 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
   //data_update(0);
   
   Highcharts.setOptions({
-lang: {
-    weekdays: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
-} });
+	lang: {
+		weekdays: ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс']
+    }
+  });
   
   document.getElementById("place_radioButton_0").click()
 }
