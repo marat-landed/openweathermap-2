@@ -54,7 +54,7 @@ function data_arch_update (place_index) {
 	// Создаем подпись параметра
 	var parag = document.createElement('p');
 	parag.style.cssText += 'font-size: 14px; padding: 10px; font-weight: bold;';
-	parag.innerText = Chart_title_arr[key];
+	parag.innerText = Chart_title_arr_[key];
 	document.getElementById('div_table_archive').appendChild(parag);
 	
 	let table = document.createElement('table');
