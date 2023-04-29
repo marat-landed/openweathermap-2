@@ -30,7 +30,7 @@ function plot_last_forecast(all_last_forecasts, openweathermap_place) {
   
   console.log("last_forecasts:",last_forecasts);
   var keys = Object.keys(last_forecasts);
-  let place_name, today_utc, forecast = [];
+  let place_name, today_utc, forecast = {};
   for (var key = 0; key < keys.length; key++){
 	// 1-й элемент - имя места: Песочин,...
 	// 2-й элемент - дата
@@ -68,7 +68,7 @@ function plotChart(place_name, today_utc, forecast) {
   var keys = Object.keys(forecast);
   
   // Преобразуем ко времени 00 часов
-  //var pointStart_curr = parseInt(today_utc/86400)*86400000;
+  var pointStart_curr = parseInt(today_utc/86400)*86400000;
   //console.log("pointStart_curr:",pointStart_curr); // 1649808000000
   var date = new Date(today_utc*1000);
   var day = date.getDate();
