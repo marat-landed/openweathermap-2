@@ -74,6 +74,7 @@ function data_dist_update (place_index) {
     console.log(dist);
 	console.log(param_name);
 	let param = dist[param_name];
+	console.log(param);
 	
     // Создаем подпись параметра
 	var parag = document.createElement('p');
