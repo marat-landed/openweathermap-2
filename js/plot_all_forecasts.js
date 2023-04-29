@@ -53,7 +53,7 @@ function data_arch_update (place_index) {
   var keys = Object.keys(forecasts);
   for (let i = 0; i < param_name_str_.length; i++){
 	let param_name = param_name_str_[i][0];
-	if (param_name_str_[i].length == 1)
+	if (param_name_str_[i].length == 2)
 	  param_name += "/" + param_name_str_[i][1];
     console.log(forecasts);
 	console.log(param_name);
