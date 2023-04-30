@@ -98,8 +98,6 @@ function create_chart_error_mean(renderTo, Chart_title, yAxis_title) {
         shadow: false
       }
     },
-	series: [{
-	}],
 	xAxis: {
 		categories: ['1', '2', '3', '4', '5', '6', '7'],
         labels: {
