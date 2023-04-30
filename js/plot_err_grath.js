@@ -72,8 +72,8 @@ function plot_err_grath(all_dist, Chart_title_arr, yAxis_title_arr, param_scale)
 	    }
 		let mean_error;
 		if (sum_el != 0)
-	      //mean_error = (sum_err/sum_el).toFixed(1); // округляем до первого знака
-	      mean_error = (sum_err/sum_el); // округляем до первого знака
+	      mean_error = Number((sum_err/sum_el).toFixed(1)); // округляем до первого знака
+	      //mean_error = (sum_err/sum_el); // округляем до первого знака
 	    else
 		  mean_error = 0;
 		console.log(sum_err,sum_el,mean_error);
