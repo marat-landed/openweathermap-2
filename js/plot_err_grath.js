@@ -9,38 +9,44 @@
 
 var chartEr_err = [];
 
-function plot_err_grath(all_dist) {
+function plot_err_grath(all_dist, Chart_title_arr, yAxis_title_arr) {
   // jsonValue - объект.
   // Key: distribution/temp/min, distribution/temp/max,..., distribution/snow
   // Каждый элемент объекта - массив из 7 значений - по дням прогноза.
   // Каждое значение - строка вида "6 1 0 2 0 0 0 0 0 0 0".
   // Каждое элемент в строке - количество ошибок, находящихся в соответствующем интервале.
-  console.log("plot_err_grath",all_dist);
+  //console.log("plot_err_grath",all_dist);
+  
+  // Создаем графики
+  for (let p_name_num = 0; p_name_num < param_name_str_.length-1; p_name_num++) {
+    // Подпись графика параметра
+    const Chart_title = Chart_title_arr[p_name_num];
+	// Создаем div для графика 
+	let div = document.createElement('div');
+	let param_name = param_name_str_[p_name_num][0];
+	if (param_name_str_[p_name_num].length == 2)
+	  param_name += "-" + param_name_str_[p_name_num][1];
+	let renderTo = param_name + "-err";
+	div.setAttribute("id", renderTo);
+	document.getElementById('div_err_grath').appendChild(div);
+	
+	// Создаем графики распределения ошибок по дням прогноза
+	let yAxis_title = yAxis_title_arr[p_name_num];
+	create_chart_error_mean(renderTo, Chart_title, yAxis_title);
+  }
+	
+  return;  
   
   for (let i=0; i<all_dist.length-1; i++) { // цикл по местам (н.п.)
 	let dist = all_dist[i];
 	let place_name = dist.place_name;
-	console.log(place_name);
-    for (let name_num = 0; name_num < param_name_str_.length-2; name_num++) {
+	//console.log(place_name);
+    for (let name_num = 0; name_num < param_name_str_.length-1; name_num++) {
 	  let param_name = param_name_str_[name_num][0];
 	  if (param_name_str_[name_num].length == 2)
 	    param_name += "/" + param_name_str_[name_num][1];
 	  var param = dist[param_name];
-	  console.log(param_name, param);
-	  continue;
-	// Подпись параметра
-	const Chart_title = Chart_title_arr[key];
-	
-	// Создаем div для графика
-	let div = document.createElement('div');
-	let renderTo = keys[key] + "-err";
-	div.setAttribute("id", renderTo);
-	//div.classList.add("table_arch");
-	document.getElementById('div_err_grath').appendChild(div);
-	
-	// Создаем графики распределения ошибок по дням прогноза
-	let yAxis_title = yAxis_title_arr[key];
-	create_chart_error_mean(renderTo, Chart_title, yAxis_title);
+	  
 		
 	// Создаем данные для графика
 	// Вычисляем средние значения ошибок
