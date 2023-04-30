@@ -74,7 +74,7 @@ import { database_URL, openweathermap_place, Chart_title_arr, param_name_str, pa
 		  //console.log("Передаем для построения графиков");
 		  plot_dist_grath(all_dist, openweathermap_place, Chart_title_arr, param_name_str, param_scale, yAxis_title_arr); // Выводим графики распределений
 		  plot_dist_tab(all_dist, Chart_title_arr, openweathermap_place, param_name_str); // Строим таблицы всех распределений ошибок
-		  plot_err_grath(all_dist, Chart_title_arr, yAxis_title_arr); // Выводим графики средних абсолютных ошибок
+		  plot_err_grath(all_dist, Chart_title_arr, yAxis_title_arr, param_scale); // Выводим графики средних абсолютных ошибок
 		})
 	  }
 	  
