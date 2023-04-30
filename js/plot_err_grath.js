@@ -35,40 +35,37 @@ function plot_err_grath(all_dist, Chart_title_arr, yAxis_title_arr) {
 	create_chart_error_mean(renderTo, Chart_title, yAxis_title);
   }
 	
-  return;  
-  
+  // Добавление данных для графика
+  // Цикл по местам (н.п.)
   for (let i=0; i<all_dist.length-1; i++) { // цикл по местам (н.п.)
 	let dist = all_dist[i];
 	let place_name = dist.place_name;
-	//console.log(place_name);
-    for (let name_num = 0; name_num < param_name_str_.length-1; name_num++) {
-	  let param_name = param_name_str_[name_num][0];
-	  if (param_name_str_[name_num].length == 2)
-	    param_name += "/" + param_name_str_[name_num][1];
+	for (let p_name_num = 0; p_name_num < param_name_str_.length-1; p_name_num++) {
+	  let param_name = param_name_str_[p_name_num][0];
+	  if (param_name_str_[p_name_num].length == 2)
+	    param_name += "/" + param_name_str_[p_name_num][1];
 	  var param = dist[param_name];
-	  
-		
-	// Создаем данные для графика
-	// Вычисляем средние значения ошибок
-    var data_err = [];
-	for (let j=0; j<7; j++) {
-	  // Берем строку
-	  let str1 = param[j];
-	  // Превращаем её в числовой массив
-      let myArray = str1.split(" ").map(Number);
-	  // Находим сумму элементов и сумму ошибок
-	  let sum_el = 0;
-	  let sum_err = 0;
-	  for (let k=0; k<myArray.length; k++) {
-		sum_el += myArray[k];
-       	sum_err	+= myArray[k]*k*param_scale[key];
+
+	  // Вычисляем средние значения ошибок
+      let data_err = [];
+	  for (let j=0; j<7; j++) {
+	    // Берем строку
+	    let str1 = param[j];
+	    // Превращаем её в числовой массив
+        let myArray = str1.split(" ").map(Number);
+	    // Находим сумму элементов и сумму ошибок
+	    let sum_el = 0;
+	    let sum_err = 0;
+	    for (let k=0; k<myArray.length; k++) {
+		  sum_el += myArray[k];
+       	  sum_err	+= myArray[k]*k*param_scale[key];
+	    }
+	    let mean_error = sum_err/sum_el;
+	    data_err.push(mean_error);
 	  }
-	  let mean_error = sum_err/sum_el;
-	  data_err.push(mean_error);
-	}
-	chartEr_err[key].series[0].setData(data_err);
-  } // for (var key = 0; key < keys.length; key++){
-  }
+	  chartEr_err[p_name_num].series[i].setData(data_err);
+    } // for (let p_name_num = 0; p_name_num < param_name_str_.length-1; p_name_num++) {
+  } // for (let i=0; i<all_dist.length-1; i++) { // цикл по местам (н.п.)
 }
 
 function create_chart_error_mean(renderTo, Chart_title, yAxis_title) {
