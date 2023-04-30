@@ -58,7 +58,7 @@ function plot_err_grath(all_dist, Chart_title_arr, yAxis_title_arr, param_scale)
 	    let sum_err = 0;
 	    for (let k=0; k<myArray.length; k++) {
 		  sum_el += myArray[k];
-       	  sum_err	+= myArray[k]*k*param_scale[key];
+       	  sum_err	+= myArray[k]*k*param_scale[p_name_num];
 	    }
 	    let mean_error = sum_err/sum_el;
 	    data_err.push(mean_error);
