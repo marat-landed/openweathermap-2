@@ -63,6 +63,8 @@ function plot_err_grath(all_dist, Chart_title_arr, yAxis_title_arr, param_scale)
 	    let mean_error = sum_err/sum_el;
 	    data_err.push(mean_error);
 	  }
+	  console.log(chartEr_err);
+	  console.log(place_num, p_name_num);
 	  chartEr_err[p_name_num].series[place_num].setData(data_err);
     } // for (let p_name_num = 0; p_name_num < param_name_str_.length-1; p_name_num++) {
   } // for (let i=0; i<all_dist.length-1; i++) { // цикл по местам (н.п.)
