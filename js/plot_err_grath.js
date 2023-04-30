@@ -16,15 +16,18 @@ function plot_err_grath(all_dist) {
   // Каждое значение - строка вида "6 1 0 2 0 0 0 0 0 0 0".
   // Каждое элемент в строке - количество ошибок, находящихся в соответствующем интервале.
   console.log("plot_err_grath",all_dist);
-  return;
   
-  
-  var keys = Object.keys(all_dist);
-  
-  for (var key = 0; key < keys.length; key++){
-	var param = all_dist[keys[key]];
-	//console.log(key,param); // key = 0..9; param = Array(7) [ "7 2 0 0 0 0 0 0 0 0 0", "4 3 0 0 0 0 0 0 0 0 0", "4 2 0 0 0 0 0 0 0 0 0", "4 0 1 0 0 0 0 0 0 0 0", "0 4 0 0 0 0 0 0 0 0 0", "2 0 0 1 0 0 0 0 0 0 0", "1 1 0 0 0 0 0 0 0 0 0" ]
-	
+  for (let i=0; i<all_dist.length-1; i++) { // цикл по местам (н.п.)
+	let dist = all_dist[i];
+	let place_name = dist.place_name;
+	console.log(place_name);
+    for (let name_num = 0; name_num < param_name_str_.length-2; name_num++) {
+	  let param_name = param_name_str_[name_num][0];
+	  if (param_name_str_[name_num].length == 2)
+	    param_name += "/" + param_name_str_[name_num][1];
+	  var param = dist[param_name];
+	  console.log(param_name, param);
+	  continue;
 	// Подпись параметра
 	const Chart_title = Chart_title_arr[key];
 	
@@ -59,6 +62,7 @@ function plot_err_grath(all_dist) {
 	}
 	chartEr_err[key].series[0].setData(data_err);
   } // for (var key = 0; key < keys.length; key++){
+  }
 }
 
 function create_chart_error_mean(renderTo, Chart_title, yAxis_title) {
