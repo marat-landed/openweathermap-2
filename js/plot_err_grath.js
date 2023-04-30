@@ -37,8 +37,10 @@ function plot_err_grath(all_dist, Chart_title_arr, yAxis_title_arr, param_scale)
 	for (let place_num=0; place_num<all_dist.length; place_num++) { // цикл по местам (н.п.)
 	  let dist = all_dist[place_num];
 	  let place_name = dist.place_name;
+	  // Делаем короткое название
+	  let myArray = place_name.split(",");
 	  chartEr_err[p_name_num].addSeries({
-        name: place_name
+        name: myArray[0]
       });
 	}
   }
