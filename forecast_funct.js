@@ -79,7 +79,7 @@ const GetNewForecast_param = async (response, param_no, date, allow_output) => {
 	  if (param_name_str[param_no].length == 1)	{
 	    var param = response.data.daily[i][param_name_str[param_no]];
 		// Вероятность осадков переводим в проценты
-		if (param_name_str[param_no] == "pop") param = parseInt(param*100);
+		if (param_name_str[param_no] == "pop") param = parseInt(param*100); // parseInt отбрасывает дробную часть
 	  }
 	  else
 	    var param = response.data.daily[i][param_name_str[param_no][0]][param_name_str[param_no][1]];

@@ -5,21 +5,24 @@
 //var chartT, // 'chart-temperature'
 //    chartClPr; // 'chart-clouds-precipitation'
 
-import {Chart_title_arr, yAxis_title_arr, param_scale} from "./myconst.js";
+//import {Chart_title_arr, yAxis_title_arr, param_scale} from "./myconst.js";
 
 var chartEr_err = [];
 
-export function plot_err_grath(jsonValue) {
+function plot_err_grath(all_dist) {
   // jsonValue - объект.
   // Key: distribution/temp/min, distribution/temp/max,..., distribution/snow
   // Каждый элемент объекта - массив из 7 значений - по дням прогноза.
   // Каждое значение - строка вида "6 1 0 2 0 0 0 0 0 0 0".
   // Каждое элемент в строке - количество ошибок, находящихся в соответствующем интервале.
+  console.log("plot_err_grath",all_dist);
+  return;
   
-  var keys = Object.keys(jsonValue);
+  
+  var keys = Object.keys(all_dist);
   
   for (var key = 0; key < keys.length; key++){
-	var param = jsonValue[keys[key]];
+	var param = all_dist[keys[key]];
 	//console.log(key,param); // key = 0..9; param = Array(7) [ "7 2 0 0 0 0 0 0 0 0 0", "4 3 0 0 0 0 0 0 0 0 0", "4 2 0 0 0 0 0 0 0 0 0", "4 0 1 0 0 0 0 0 0 0 0", "0 4 0 0 0 0 0 0 0 0 0", "2 0 0 1 0 0 0 0 0 0 0", "1 1 0 0 0 0 0 0 0 0 0" ]
 	
 	// Подпись параметра
