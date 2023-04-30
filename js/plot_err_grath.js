@@ -33,6 +33,14 @@ function plot_err_grath(all_dist, Chart_title_arr, yAxis_title_arr, param_scale)
 	// Создаем графики распределения ошибок по дням прогноза
 	let yAxis_title = yAxis_title_arr[p_name_num];
 	create_chart_error_mean(renderTo, Chart_title, yAxis_title);
+	// Добавляем к графику серии по числу мест (н.п.)
+	for (let place_num=0; place_num<all_dist.length-1; place_num++) { // цикл по местам (н.п.)
+	  let dist = all_dist[place_num];
+	  let place_name = dist.place_name;
+	  chartEr_err[p_name_num].addSeries({
+        name: place_name;
+      });
+	}
   }
 	
   // Добавление данных для графика
