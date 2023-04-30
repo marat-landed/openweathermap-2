@@ -70,7 +70,7 @@ function plot_err_grath(all_dist, Chart_title_arr, yAxis_title_arr, param_scale)
 		  sum_el += myArray[k];
        	  sum_err	+= myArray[k]*k*param_scale[p_name_num];
 	    }
-	    let mean_error = sum_err/sum_el;
+	    let mean_error = (sum_err/sum_el).toFixed(1); // округляем до первого знака
 	    data_err.push(mean_error);
 	  }
 	  chartEr_err[p_name_num].series[place_num].setData(data_err);
