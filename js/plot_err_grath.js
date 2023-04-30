@@ -38,7 +38,7 @@ function plot_err_grath(all_dist, Chart_title_arr, yAxis_title_arr, param_scale)
 	  let dist = all_dist[place_num];
 	  let place_name = dist.place_name;
 	  chartEr_err[p_name_num].addSeries({
-        name: place_name;
+        name: place_name
       });
 	}
   }
