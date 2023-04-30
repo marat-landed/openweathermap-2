@@ -34,7 +34,7 @@ function plot_err_grath(all_dist, Chart_title_arr, yAxis_title_arr, param_scale)
 	let yAxis_title = yAxis_title_arr[p_name_num];
 	create_chart_error_mean(renderTo, Chart_title, yAxis_title);
 	// Добавляем к графику серии по числу мест (н.п.)
-	for (let place_num=0; place_num<all_dist.length-1; place_num++) { // цикл по местам (н.п.)
+	for (let place_num=0; place_num<all_dist.length; place_num++) { // цикл по местам (н.п.)
 	  let dist = all_dist[place_num];
 	  let place_name = dist.place_name;
 	  chartEr_err[p_name_num].addSeries({
@@ -45,7 +45,7 @@ function plot_err_grath(all_dist, Chart_title_arr, yAxis_title_arr, param_scale)
 	
   // Добавление данных для графика
   // Цикл по местам (н.п.)
-  for (let place_num=0; place_num<all_dist.length-1; place_num++) { // цикл по местам (н.п.)
+  for (let place_num=0; place_num<all_dist.length; place_num++) { // цикл по местам (н.п.)
 	let dist = all_dist[place_num];
 	let place_name = dist.place_name;
 	for (let p_name_num = 0; p_name_num < param_name_str_.length-1; p_name_num++) {
