@@ -101,7 +101,11 @@ function create_chart_error_mean(renderTo, Chart_title, yAxis_title) {
         align: 'left',
         //x: 70, // = marginLeft - default spacingLeft
         //itemWidth: 100,
-        borderWidth: 1
+        borderWidth: 1,
+		//enabled: false,
+		itemStyle: {
+		  fontWeight: 'normal'
+		}
     },
     plotOptions: {
       series: {
@@ -144,12 +148,6 @@ function create_chart_error_mean(renderTo, Chart_title, yAxis_title) {
 	credits: {
 	  enabled: false
 	},
-	legend: {
-	  //enabled: false,
-	  itemStyle: {
-	    fontWeight: 'normal'
-	  }
-    },
 	tooltip: {
       //xDateFormat: '%d-%m-%Y',
       shared: true,
