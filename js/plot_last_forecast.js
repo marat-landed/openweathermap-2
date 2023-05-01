@@ -237,7 +237,13 @@ function hexToRgb(hex) {
 
 // Create Temperature Chart
 function create_chart_temp(renderTo) {
-  chartT = new Highcharts.chart(renderTo,{	
+	
+  //Highcharts.chart([renderTo], options [, callback]);
+  //or
+  //new Highcharts.Chart([renderTo], options [, callback]);
+
+	
+  chartT = new Highcharts.Chart(renderTo,{	
     //chart: {
     //  type: 'spline',
     //  inverted: false
