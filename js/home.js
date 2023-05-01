@@ -1,4 +1,4 @@
-const openweathermap_place;
+let openweathermap_place;
 
 function draw_map(place) {
   openweathermap_place = place;
