@@ -96,9 +96,9 @@ function create_chart_error_mean(renderTo, Chart_title, yAxis_title) {
       }
 	},
 	legend: {
-        width: 400,
+        width: 100%, //400,
         floating: true,
-        align: 'left',
+        align: 'bottom', //'left',
         //x: 70, // = marginLeft - default spacingLeft
         //itemWidth: 100,
         borderWidth: 1,
