@@ -73,7 +73,7 @@ function draw_map(place) {
 						   //fontFamily: 'Poppins',
 						   //fontWeight: '600',
 						   //color: '#373737',
-						   fontSize: "12px",
+						   fontSize: "22px",
 						   //pointerEvents: 'none',
 						 }
 					   }
