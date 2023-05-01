@@ -105,7 +105,8 @@ function create_chart_error_mean(renderTo, Chart_title, yAxis_title) {
 		//enabled: false,
 		itemStyle: {
 		  fontWeight: 'normal'
-		}
+		},
+		itemDistance: 0
     },
     plotOptions: {
       series: {
