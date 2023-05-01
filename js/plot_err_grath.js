@@ -101,7 +101,7 @@ function create_chart_error_mean(renderTo, Chart_title, yAxis_title) {
         //align: 'bottom', //'left',
         //x: 70, // = marginLeft - default spacingLeft
         //itemWidth: 100,
-        borderWidth: 1,
+        //borderWidth: 1,
 		//enabled: false,
 		itemStyle: {
 		  fontWeight: 'normal'
