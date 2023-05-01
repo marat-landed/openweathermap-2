@@ -381,7 +381,7 @@ function create_chart_temp(renderTo) {
 
 // Create Weather - Clouds
 function create_chart_weather_clouds(renderTo) {
-  chartWC = new Highcharts.chart(renderTo,{	
+  chartWC = new Highcharts.Chart(renderTo,{	
     chart: {
       type: 'spline',
       inverted: false,
@@ -467,7 +467,7 @@ function create_chart_weather_clouds(renderTo) {
 
 // Create Humidity - Pop - Precipitation
 function create_chart_humid_pop_precip(renderTo) {
-  chartHPP = new Highcharts.chart(renderTo,{
+  chartHPP = new Highcharts.Chart(renderTo,{
     title: {
 	  text: "Вероятность осадков, количество осадков, влажность",
 	  //align: 'left'
@@ -677,7 +677,7 @@ function create_chart_humid_pop_precip(renderTo) {
 
 // Create Pressure - Wind Chart
 function create_chart_press_wind(renderTo) {
-  chartPW = new Highcharts.chart(renderTo,{	
+  chartPW = new Highcharts.Chart(renderTo,{	
 	title: {
 	  text: 'Давление, ветер'
 	},
