@@ -9,7 +9,7 @@
     ).then(response => response.json());
 
     let chart;
-	
+	/*
 	const openweathermap_place = 
   [ [ 49.9541962, 36.0966085, "Pisochyn", "Песочин, Украина, Харьковская область" ],
 	[ 61.217381, -149.863129, "Anchorage", "Анкоридж, США, Аляска" ],
@@ -17,6 +17,7 @@
 	[ 9.005401, 38.763611, "Addis_Ababa", "Аддис-Абеба, Эфиопия" ],
 	[ 63.460899, 142.785812, "Oymyakon", "Оймякон, Россия" ],
 	[ -77.846, 166.676, "McMurdo", "Станция Мак-Мердо, США" ] ];
+	*/
 	
 	let data = [];
 	for (let i=0; i<openweathermap_place.length; i++) {
