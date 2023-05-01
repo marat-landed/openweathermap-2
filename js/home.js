@@ -71,7 +71,7 @@ function draw_map(place) {
 						 //},
 						 style: {
 						   fontFamily: 'Arial',
-						   //fontWeight: '600',
+						   fontWeight: 'normal',
 						   //color: '#373737',
 						   fontSize: "13px",
 						   //pointerEvents: 'none',
