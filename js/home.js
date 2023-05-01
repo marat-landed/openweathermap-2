@@ -33,7 +33,7 @@ function draw_map(place) {
 	  data.push(place);
 	}
 		
-    const drawMap () => {
+    const drawMap = () => {
         if (!chart) {
             chart = Highcharts.mapChart('map-container', {
                 chart: {
