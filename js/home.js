@@ -29,11 +29,11 @@ function draw_map(place) {
 	  let lat = place1[1];
 	  geometry.coordinates = [lat, lon];
 	  place.geometry = geometry;
-	  place.name = place_name_short + "<br \/>" + place1[2];
+	  place.name = place_name_short; // + "<br \/>" + place1[2];
 	  data.push(place);
 	}
 		
-    const drawMap = projectionKey => {
+    const drawMap () => {
         if (!chart) {
             chart = Highcharts.mapChart('map-container', {
                 chart: {
@@ -120,5 +120,6 @@ function draw_map(place) {
         }
     };
 
-    drawMap('xmiller');
+    //drawMap('miller');
+	drawMap();
 })();
