@@ -128,7 +128,9 @@ import { database_URL, openweathermap_place, Chart_title_arr, param_name_str, pa
 		  if (this.readyState!==4) return;
 		  if (this.status!==200) return; // or whatever error handling you want
 		  document.getElementById(page_name).innerHTML= this.responseText;
-		  if (page_name == 'forecasts') {
+		  if (page_name == 'home') {
+		    draw_map(openweathermap_place);
+		  } else if (page_name == 'forecasts') {
 		    // Подготовка последних прогнозов и передача их для построения графиков
 			prepare_plot_forecasts();
 		  } else if (page_name == 'statistics_graph') {
