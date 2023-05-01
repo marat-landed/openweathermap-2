@@ -16,7 +16,7 @@ function draw_map(place) {
 
     let chart;
 	
-	let data = [];
+	let map_point = [];
 	for (let i=0; i<openweathermap_place.length; i++) {
 	  let place1 = openweathermap_place[i];
 	  let place_name = place1[3];
@@ -30,7 +30,7 @@ function draw_map(place) {
 	  geometry.coordinates = [lat, lon];
 	  place.geometry = geometry;
 	  place.name = place_name_short; // + "<br \/>" + place1[2];
-	  data.push(place);
+	  map_point.push(place);
 	}
 		
     const drawMap = () => {
@@ -60,6 +60,12 @@ function draw_map(place) {
 					   projectedBounds: 'world'
                     }
                 },
+				mapNavigation: {
+					enabled: true,
+					buttonOptions: {
+						verticalAlign: 'bottom'
+					}
+				},
 				plotOptions: {
 					 //useHTML: true,
 					 series: {
@@ -108,7 +114,7 @@ function draw_map(place) {
                 },
 				{
                     type: 'mappoint',
-                    data: data,
+                    data: map_point,
                     color: '#FF5500'
                 }]
             });

@@ -20,7 +20,7 @@ const openweathermap_place =
 	[ -54.81084, -68.31591, "Ushuaia", "Ушуая, Аргентина, Огненная Земля" ],
 	[ 9.005401, 38.763611, "Addis_Ababa", "Аддис-Абеба, Эфиопия" ],
 	[ 63.460899, 142.785812, "Oymyakon", "Оймякон, Россия" ],
-	[ -77.846, 166.676, "McMurdo", "Станция Мак-Мердо, США" ] ];
+	[ -77.846, 166.676, "McMurdo", "Мак-Мердо, США" ] ];
 const database_URL = "https://open-weather-map-2-default-rtdb.europe-west1.firebasedatabase.app";
 //const database_URL = "https://probe-web-default-rtdb.europe-west1.firebasedatabase.app"; // Probe-web
 const Chart_title_arr = ['Температура минимальная', 'Температура максимальная', 'Давление', 'Влажность', 'Скорость ветра', 'Направление ветра', 'Облачность', 'Вероятность осадков', 'Дождь', 'Снег', 'Погода'];
