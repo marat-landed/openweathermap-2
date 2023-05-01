@@ -70,10 +70,10 @@ function draw_map(place) {
 						 //formatter: function() {
 						 //},
 						 style: {
-						   //fontFamily: 'Poppins',
+						   fontFamily: 'Arial',
 						   //fontWeight: '600',
 						   //color: '#373737',
-						   fontSize: "22px",
+						   fontSize: "13px",
 						   //pointerEvents: 'none',
 						 }
 					   }
@@ -92,7 +92,7 @@ function draw_map(place) {
                     clip: false,
 					//color: 'tomato',
 					borderColor: 'black',
-					borderWidth: 0.5,
+					borderWidth: 0.2,
 					nullColor: 'rgba(255, 255, 255, 1.0)',
                 },
 				{
@@ -101,7 +101,7 @@ function draw_map(place) {
                     name: 'Antarctica',
                     clip: false,
                     borderColor: 'black',
-					borderWidth: 0.5,
+					borderWidth: 0.2,
 					nullColor: 'rgba(255, 255, 255, 1.0)',
                 },
 				{
