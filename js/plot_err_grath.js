@@ -83,7 +83,7 @@ function plot_err_grath(all_dist, Chart_title_arr, yAxis_title_arr, param_scale)
 }
 
 function create_chart_error_mean(renderTo, Chart_title, yAxis_title) {
-  let chart = new Highcharts.chart(renderTo,{
+  let chart = new Highcharts.Chart(renderTo,{
     chart: {
       type: 'line',
       width: 500,
