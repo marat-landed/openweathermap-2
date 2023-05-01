@@ -37,7 +37,7 @@ function draw_map(place) {
         if (!chart) {
             chart = Highcharts.mapChart('map-container', {
                 chart: {
-                    height: '65%',
+                    height: '100%',
 					backgroundColor: 'rgba(20,20,20,0.3)',
 					plotBackgroundColor: '#4b96af'
                 },
