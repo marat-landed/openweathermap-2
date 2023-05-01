@@ -155,28 +155,8 @@ function plotDistribution(dist) {
   }
 }
 
-/*
-function myListener() {
-  // this.name = 0-6, 3-2,...
-  let myArray = this.name.split("-");
-  let series = chartEr_distr[0].series[2];
-  let series_name = series.name;
-  
-  series = chartEr_distr[myArray[0]].series[myArray[1]];
-  series_name = series.name;
-  
-  if (this.checked) {
-    //console.log('Checkbox отмечен');
-	series.setVisible(true);
-  } else {
-    //console.log('Checkbox не отмечен');
-	series.setVisible(false);
-  }
-}
-*/
-
 function create_chart_error_distr(renderTo, Chart_title, xAxis_title, xAxis_categories) {
-  let chart = new Highcharts.chart(renderTo,{
+  let chart = new Highcharts.Chart(renderTo,{
     chart: {
       type: 'column',
       width: 500,
