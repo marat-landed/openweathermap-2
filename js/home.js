@@ -63,7 +63,7 @@ function draw_map(place) {
 				mapNavigation: {
 					enabled: true,
 					buttonOptions: {
-						verticalAlign: 'bottom'
+						verticalAlign: 'top'
 					}
 				},
 				plotOptions: {
