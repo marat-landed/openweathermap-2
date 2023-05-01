@@ -95,6 +95,14 @@ function create_chart_error_mean(renderTo, Chart_title, yAxis_title) {
         fontWeight: 'bold'
       }
 	},
+	legend: {
+        width: 400,
+        //floating: true,
+        //align: 'left',
+        //x: 70, // = marginLeft - default spacingLeft
+        //itemWidth: 100,
+        //borderWidth: 1
+    },
     plotOptions: {
       series: {
         //pointWidth: 5,
