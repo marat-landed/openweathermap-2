@@ -132,10 +132,6 @@ function draw_map(place) {
                     type: 'mappoint',
                     data: map_point,
                     color: '#FF5500',
-					tooltip: {
-						//enabled: false,
-						pointFormat: '{point.name}'
-					}
                 }]
             });
 
