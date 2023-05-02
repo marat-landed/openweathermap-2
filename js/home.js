@@ -19,17 +19,12 @@ function draw_map(place) {
 	let map_point = [];
 	for (let i=0; i<openweathermap_place.length; i++) {
 	  let place1 = openweathermap_place[i];
-	  let place_name = place1[3];
-	  let myArray = place_name.split(", ");
-	  let place_name_short = myArray[0];
 	  let place = {};
-	  let geometry = {};
-	  geometry.type = 'Point';
-	  let lon = place1[0];
-	  let lat = place1[1];
-	  geometry.coordinates = [lat, lon];
-	  place.geometry = geometry;
-	  place.name = place_name_short; // + "<br \/>" + place1[2];
+	  place.full_name = place1[3]
+	  let myArray = place1[3].split(", ");
+	  place.name = myArray[0];
+	  place.lat = place1[0];
+	  place.lon = place1[1];
 	  map_point.push(place);
 	}
 		
@@ -66,9 +61,18 @@ function draw_map(place) {
 						verticalAlign: 'top'
 					}
 				},
+				tooltip: {
+					shared: true,
+					useHTML: true,
+					headerFormat: '<table>',
+					pointFormat: '<tr><td>{point.full_name}</td></tr>' +
+						'<tr><td>Lon:{point.lon} Lat:{point.lat}</td></tr>',
+					footerFormat: '</table>',
+					valueDecimals: 2
+				},
 				plotOptions: {
 					 //useHTML: true,
-					 series: {
+					series: {
 					   dataLabels: {
 						 //enabled: true,
 						 //allowOverlap: false,
@@ -85,7 +89,19 @@ function draw_map(place) {
 						   //pointerEvents: 'none',
 						 }
 					   }
-					 }
+					},
+					mappoint: {
+						keys: ['id', 'lat', 'lon', 'name', 'y'],
+						marker: {
+							//lineWidth: 1,
+							//lineColor: '#000',
+							//symbol: 'mapmarker',
+							//radius: 8
+						},
+						dataLabels: {
+							//enabled: false
+						}
+					}
 				},
                 series: [
 				{
