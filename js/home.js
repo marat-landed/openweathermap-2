@@ -64,10 +64,10 @@ function draw_map(place) {
 				tooltip: {
 					shared: true,
 					useHTML: true,
-					headerFormat: '<table>',
-					pointFormat: '<tr><td style="text-align:left">{point.full_name}</td></tr>' +
-						'<tr align="left"><td>Lon:{point.lon} Lat:{point.lat}</td></tr>',
-					footerFormat: '</table>',
+					headerFormat: '',
+					pointFormat: '{point.full_name}</br>' +
+						'Lon:{point.lon} Lat:{point.lat}',
+					footerFormat: '',
 					valueDecimals: 2
 				},
 				plotOptions: {
