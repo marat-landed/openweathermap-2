@@ -66,7 +66,7 @@ function draw_map(place) {
 					useHTML: true,
 					headerFormat: '<table>',
 					pointFormat: '<tr><td>{point.full_name}</td></tr>' +
-						'<tr><td>Lon:{point.lon} Lat:{point.lat}</td></tr>',
+						'<tr align="left"><td>Lon:{point.lon} Lat:{point.lat}</td></tr>',
 					footerFormat: '</table>',
 					valueDecimals: 2
 				},
