@@ -291,7 +291,7 @@ table.table_place td {
   margin: 0;
 }
 
-.leftimg {
-  float:left; /* Выравнивание по левому краю */
+.img-align {
+  float:right; /* Выравнивание по левому краю */
   margin: 7px 7px 7px 0; /* Отступы вокруг картинки */
 }
