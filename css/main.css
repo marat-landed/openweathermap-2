@@ -293,5 +293,5 @@ table.table_place td {
 
 .img-align {
   float:right; /* Выравнивание по левому краю */
-  margin: 7px 7px 7px 0; /* Отступы вокруг картинки */
+  margin: 0 0 0 7px; /* Отступы вокруг картинки */
 }
