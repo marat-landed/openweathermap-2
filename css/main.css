@@ -290,3 +290,8 @@ table.table_place td {
   padding: 0;
   margin: 0;
 }
+
+.leftimg {
+  float:left; /* Выравнивание по левому краю */
+  margin: 7px 7px 7px 0; /* Отступы вокруг картинки */
+}
