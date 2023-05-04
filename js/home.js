@@ -62,13 +62,23 @@ function draw_map(place) {
 					}
 				},
 				tooltip: {
-					shared: true,
 					useHTML: true,
-					headerFormat: '',
-					pointFormat: '{point.full_name}</br>' +
-						'Lon:{point.lon} Lat:{point.lat}',
-					footerFormat: '',
-					valueDecimals: 2
+					headerFormat: '<span class="tooltipHeader">{point.key}</span>',
+					pointFormat: '<br/> <div class="tooltipPointWrapper">‎'
+					+
+					'<span class="tooltipPoint">{point.full_name}</span>'
+					+
+					'<span class="tooltipLine"></span> <br/>'
+					+
+					'<span style="color:{point.color2}">Lat: {point.lat} Lon: {point.lon}</span>',
+					style: {
+					  color: '#000'
+					},
+					valueDecimals: 1,
+					backgroundColor: '#F8FF99',
+					borderColor: '#808080',
+					borderRadius: 6,
+					borderWidth: 2,
 				},
 				plotOptions: {
 					 //useHTML: true,
