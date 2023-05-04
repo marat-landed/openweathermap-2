@@ -70,7 +70,7 @@ function draw_map(place) {
 					+
 					'<span class="tooltipLine"></span> <br/>'
 					+
-					'<span style="color:{point.color2}">Lat: {point.lat} Lon: {point.lon}</span>',
+					'<span style="color:{point.color2}">Ш: {point.lat} Д: {point.lon}</span>',
 					style: {
 					  color: '#000'
 					},
