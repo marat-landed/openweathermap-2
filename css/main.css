@@ -248,8 +248,8 @@ table.table_place td {
 }
 
 .tooltipHeader {
-  float: right;
-  font-size: 0.6rem;
+  float: left;
+  font-size: 12px;
 }
 
 .tooltipHeader::before {
@@ -271,8 +271,8 @@ table.table_place td {
 }
 
 .tooltipPoint {
-  font-size: 1.5rem;
-  padding-left: 5px;
+  font-size: 15px;
+  /*padding-left: 5px;*/
   /* color: #FF0045; */
 }
 
